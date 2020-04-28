@@ -12,7 +12,7 @@ config = {
 		"DB": "houdini",
 		"Password": "jv357159",
 		"Port": "5432",
-		"Driver":"pygresql"
+		"Driver":"psycopg2"
 	},
 	"Mainserver": {
 		"Port": int("7002")
