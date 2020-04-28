@@ -4,7 +4,7 @@ from Engine.Penguin import Penguin
 def foo(client, arg):
     print(client)
     client.sendLine("[S_VERSION]|FY15-20150206 (4954)r|73971eecbd8923f695303b2cd04e5f70|Tue Feb  3 14:11:56 PST 2015|/var/lib/jenkins/jobs/BuildPlatform/workspace/metaserver_source/dimg")
-
+    
 @Instance.register("/login")
 def foonix(client, arg):
     print(client)

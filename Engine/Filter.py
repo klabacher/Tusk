@@ -15,7 +15,7 @@ class Spheniscidae(LineOnlyReceiver, object):
 
         # Defined once the client requests it (see handleRandomKey)
         self.randomKey = None
-    
+
     def dataReceived(self, line):
         self.logger.info(line)
         Adata = line.decode("utf-8")
@@ -47,12 +47,12 @@ class Spheniscidae(LineOnlyReceiver, object):
             tudo = ' '.join(new_list)
         else:
             print("else")
-    
+
     def sendPolicyFile(self):
         super(Spheniscidae, self).sendLine("<cross-domain-policy><allow-access-from domain='*' to-ports='*' /></cross-domain-policy>".encode("Utf-8"))
         self.logger.debug("Outgoing Police")
 
     def sendLine(self, line):
-        #tag = line+"\r\n"
+        tag = line+"\r\n"
         print("Outgoing Tag: {0}".format(line))
-        super(Spheniscidae, self).sendLine(line.encode("Utf-8"))
+        self.transport.write(tag.encode("utf-8"))
