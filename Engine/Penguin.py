@@ -4,7 +4,7 @@ class Penguin(Spheniscidae):
     def __init__(self, session, spirit):
         super(Penguin, self).__init__(session, spirit)
         self.PID = None
-        self.name = "jjgay"#None 
+        self.name = "jjgay"#None
         self.objectId = 0
         self.token = None
 
@@ -26,7 +26,7 @@ class Penguin(Spheniscidae):
         if self.inQueue:
             removeFromQueue(self)
 
-    def getPowerCards(element):
+    def getPowerCards(self,element):
         #todo: get player powercards from db
         if element == "snow":
             return 34
