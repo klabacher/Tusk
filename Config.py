@@ -10,7 +10,7 @@ config = {
         "Address": "localhost",
 		"User":"postgres",
 		"DB": "houdini",
-		"Password": "jv357159",
+		"Password": "",
 		"Port": "5432",
 		"Driver":"psycopg2"
 	},
