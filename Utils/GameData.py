@@ -1,5 +1,5 @@
-{
-    "GameData":{
+
+GameData= {
         "Ninjas":{
             "Fire":{
                 "HP":100,
@@ -89,4 +89,4 @@
             }
         }
     }
-}
+
