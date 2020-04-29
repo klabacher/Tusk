@@ -1,6 +1,6 @@
 from Engine.Filter import Instance
 from Engine.Penguin import Penguin
-from Engine.Matchmaking import addToQueue,getNameById
+from Engine.Matchmaking import addToQueue,getNameById,removeFromQueue
 import json
 
 queue = []
@@ -22,6 +22,11 @@ def readyhandler(client, arg):
     except:
         print("Error parsing json")
         return
+    if parsedJson['triggerName']=="mmCancel":
+        print("player leaving the queue")
+        removeFromQueue(client)
+    if parsedJson['triggerName']=="quit":
+        print("player leaving the game")
     if parsedJson['triggerName']=="mmElementSelected":
         client.element = parsedJson['element']
         client.tipsEnabled = parsedJson['tipMode']
