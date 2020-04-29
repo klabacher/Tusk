@@ -11,7 +11,6 @@ def addToQueue(client):
     client.inQueue = True
 
 def matchFound(element):
-    print("A match was found")
     hasFire = True if element == 'fire' else False
     hasSnow = True if element == 'snow' else False
     hasWater = True if element == 'water' else False
@@ -23,6 +22,7 @@ def matchFound(element):
         if hasWater == False and x[1]=="water":
             hasWater = True
     if hasFire == True and hasSnow == True and hasWater == True:
+        print("A match was found")
         return True
     else:
         return False
