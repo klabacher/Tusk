@@ -53,8 +53,8 @@ def startGame(client):
 
 def getNameById(client, pid):
     player = client.session.query(PenguinDB).filter_by(id=pid).first()
-    client.name = player.username
-    return player.username
+    client.name = player.nickname
+    return pplayer.nickname
 
 def getIndexByElement(element):
     for i in range(len(Queue)):
