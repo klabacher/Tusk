@@ -25,7 +25,7 @@ def readyhandler(client, arg):
 def addToQueue(PID,element):
     if matchFound(element):
         startGame(PID)
-    queueStruct = (PID,element)
+    queueStruct = [PID,element]
     queue.append(queueStruct)
     Penguin.inQueue = True
 
