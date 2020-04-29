@@ -1,4 +1,6 @@
+import json
 
+json.load(Utils.GameData)
 class GameEngine(object):
     def __init__(self, fireclient, waterclient, snowclient):
         self.fclient = fireclient
@@ -12,12 +14,12 @@ class GameEngine(object):
         # sly, tank, scrap
     
     def AStag(self, line):
-        clients = [fireclient, waterclient, snowclient]
+        clients = [self.fireclient, self.waterclient, self.snowclient]
         for c in clients:
             c.sendLine(line)
 
 
-class Enemy(object, GameEngine):
+class Enemy(GameEngine, object):
     def __init__(self, name, id, hp, Erange, power, round):
         self.name = name
         self.id = id
@@ -72,7 +74,7 @@ class Enemy(object, GameEngine):
                 self.x = 2
                 print("Not supported most than 3 rounds")
       
-        self.AStag(f"[O_HERE]|{self.id}|0:{self.}|x|y|128|1|0|0|0||0:1|0|1|0")
+        self.AStag(f"[O_HERE]|{self.id}|0:{self.id}|x|y|128|1|0|0|0||0:1|0|1|0")
 
     def move(self, x, y):
         tag = f"[O_SLIDE]|id do gameobject|{x}|{y}|128|{self.mSpeed}"
