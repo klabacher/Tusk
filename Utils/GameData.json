@@ -3,8 +3,9 @@
         "Ninjas":{
             "Fire":{
                 "HP":100,
-                "Range":10,
-                "Power":50,
+                "Range":2,
+                "Attack":8,
+                "Move":2,
                 "BasePosition":{
                     "z":10,
                     "y":10
@@ -12,17 +13,19 @@
             },
             "Snow":{
                 "HP":100,
-                "Range":10,
-                "Power":50,
+                "Range":3,
+                "Attack":6,
+                "Move":3,
                 "BasePosition":{
                     "z":10,
                     "y":10
                 }
             },
-            "Water":{                
+            "Water":{
                 "HP":100,
-                "Range":10,
-                "Power":50,
+                "Range":1,
+                "Attack":10,
+                "Move":2,
                 "BasePosition":{
                     "z":10,
                     "y":10
@@ -31,9 +34,10 @@
         },
         "Enemies":{
             "Sly":{
-                "HP":100,
-                "Range":10,
-                "Power":50,
+                "HP":30,
+                "Range":3,
+                "Attack":4,
+                "Move":3,
                 "Round1":{
                     "z":10,
                     "y":10
@@ -48,9 +52,10 @@
                 }
             },
             "Tank":{
-                "HP":100,
-                "Range":10,
-                "Power":50,
+                "HP":60,
+                "Range":1,
+                "Attack":10,
+                "Move":1,
                 "Round1":{
                     "z":10,
                     "y":10
@@ -65,9 +70,10 @@
                 }
             },
             "Scrap":{
-                "HP":100,
-                "Range":10,
-                "Power":50,
+                "HP":45,
+                "Range":2,
+                "Attack":5,
+                "Move":2,
                 "Round1":{
                     "z":10,
                     "y":10
