@@ -49,3 +49,12 @@ def startGame(PID):
     Penguin.inQueue = False
     #todo: send game started to all players
     return True
+
+def getQueueIndex(PID):
+    for i in range(len(queue)):
+        if queue[i][0] == PID:
+            return i
+    return 0
+
+def removeFromQueue(PID):
+    del queue[getQueueIndex(PID)]
