@@ -54,6 +54,7 @@ def startGame(client):
     if client.element == "fire":
         client.sendLine("[W_PLACELIST]|0:10001|snow_1|3 player battle scenario|1|9|5|0|1|8|0|")
         client.sendLine('[UI_CLIENTEVENT]|101|receivedJson|{"action":"jsonPayload","jsonPayload":{"1":"'+str(getNameById(client, fireId))+'","2":"'+str(getNameById(client, waterId))+'","4":"'+str(getNameById(client, snowId))+'"},"targetWindow":"http://media.localhost/game/mpassets/minigames/cjsnow/en_US/deploy/swf/ui/windows/cardjitsu_snowplayerselect.swf","triggerName":"matchFound","type":"immediateAction"}')
+        fireclient = client
     else:
         fireclient = Queue[fireIndex][2]
         fireclient.sendLine("[W_PLACELIST]|0:10001|snow_1|3 player battle scenario|1|9|5|0|1|8|0|")
@@ -61,6 +62,7 @@ def startGame(client):
     if client.element == "water":
         client.sendLine("[W_PLACELIST]|0:10001|snow_1|3 player battle scenario|1|9|5|0|1|8|0|")
         client.sendLine('[UI_CLIENTEVENT]|101|receivedJson|{"action":"jsonPayload","jsonPayload":{"1":"'+str(getNameById(client, fireId))+'","2":"'+str(getNameById(client, waterId))+'","4":"'+str(getNameById(client, snowId))+'"},"targetWindow":"http://media.localhost/game/mpassets/minigames/cjsnow/en_US/deploy/swf/ui/windows/cardjitsu_snowplayerselect.swf","triggerName":"matchFound","type":"immediateAction"}')
+        waterclient = client
     else:
         waterclient = Queue[waterIndex][2]
         waterclient.sendLine("[W_PLACELIST]|0:10001|snow_1|3 player battle scenario|1|9|5|0|1|8|0|")
@@ -70,9 +72,9 @@ def startGame(client):
         client.sendLine('[UI_CLIENTEVENT]|101|receivedJson|{"action":"jsonPayload","jsonPayload":{"1":"'+str(getNameById(client, fireId))+'","2":"'+str(getNameById(client, waterId))+'","4":"'+str(getNameById(client, snowId))+'"},"targetWindow":"http://media.localhost/game/mpassets/minigames/cjsnow/en_US/deploy/swf/ui/windows/cardjitsu_snowplayerselect.swf","triggerName":"matchFound","type":"immediateAction"}')
     else:
         snowclient = Queue[snowIndex][2]
-        removeFromQueue(snowclient)
         snowclient.sendLine("[W_PLACELIST]|0:10001|snow_1|3 player battle scenario|1|9|5|0|1|8|0|")
         snowclient.sendLine('[UI_CLIENTEVENT]|101|receivedJson|{"action":"jsonPayload","jsonPayload":{"1":"'+str(getNameById(client, fireId))+'","2":"'+str(getNameById(client, waterId))+'","4":"'+str(getNameById(client, snowId))+'"},"targetWindow":"http://media.localhost/game/mpassets/minigames/cjsnow/en_US/deploy/swf/ui/windows/cardjitsu_snowplayerselect.swf","triggerName":"matchFound","type":"immediateAction"}')
+        snowclient = client
     removeFromQueue(fireclient)
     removeFromQueue(snowclient)
     removeFromQueue(waterclient)
@@ -99,5 +101,8 @@ def getQueueIndex(PID):
     return 0
 
 def removeFromQueue(client):
-    del Queue[getQueueIndex(client.PID)]
-    print(f"Removing {client.PID}")
+    try:
+        del Queue[getQueueIndex(client.PID)]
+        print(f"Removing {client.PID}")
+    except:
+        print("Not Removed")
