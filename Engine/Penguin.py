@@ -1,9 +1,10 @@
 from Engine.Filter import Spheniscidae
-
+from Engine.Matchmaking import removeFromQueue
 class Penguin(Spheniscidae):
     def __init__(self, session, spirit):
         super(Penguin, self).__init__(session, spirit)
-        self.PID = 0
+        self.PID = None
+        self.name = "jjgay"#None 
         self.objectId = 0
         self.token = None
 
@@ -23,11 +24,7 @@ class Penguin(Spheniscidae):
         self.logger.warning("Connection Lost! "+str(reason))
         super(Penguin, self).connectionLost(reason)
         if self.inQueue:
-            removeFromQueue(self.PID)
-
-    def getUsername():
-        #todo: get player username from db
-        return "Jjguve5"
+            removeFromQueue(self)
 
     def getPowerCards(element):
         #todo: get player powercards from db

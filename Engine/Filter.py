@@ -17,9 +17,8 @@ class Spheniscidae(LineOnlyReceiver, object):
         self.randomKey = None
 
     def dataReceived(self, line):
-        self.logger.info(line)
         Adata = line.decode("utf-8")
-        print("Data: " + str(line) + ' ////')
+        self.logger.info("Data: " + Adata)
         if Adata.startswith("<"):
             self.sendPolicyFile()
         elif Adata.startswith("/") == True:
@@ -27,24 +26,20 @@ class Spheniscidae(LineOnlyReceiver, object):
             if Adata.startswith("/place_context") == True:
                 splited = Adata.split("\r\n")
                 place = splited[0].split()
-                print(place)
                 place_com = place[0]
                 place_arg = place[1:]
                 login = splited[1].split()
-                print(login)
                 login_com = login[0]
                 login_arg = login[1:]
                 Instance.call(self, place_com, place_arg)
                 Instance.call(self, login_com, login_arg)
-
             else:
                 command = packet_split[0]
                 args = packet_split[1:]
-                print("args: " + str(args))
                 Instance.call(self, command, "args")
-        elif Adata.startswith("#receivedFromFramework':") == True:
-            new_list = [x.decode('utf-8') for x in arguments]
-            tudo = ' '.join(new_list)
+        elif Adata.startswith("#receivedFromFramework") == True:
+            parsed = Adata.split("#receivedFromFramework")
+            Instance.call(self, "Framework", parsed[1])
         else:
             print("else")
 

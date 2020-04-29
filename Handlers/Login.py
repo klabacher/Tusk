@@ -23,4 +23,5 @@ def loginhandler(client, arg):
     client.sendLine("[M_REPORT]|12|Max Place Size|0|500")
     client.sendLine("[M_REPORT]|16|Max Place Instances|0|100")
     client.sendLine("[M_REPORT]|0|Max Users|0|100")
+    client.PID = arg[1]
     client.sendLine("[W_ASSETSCOMPLETE]|"+str(Penguin.PID)+"|")
