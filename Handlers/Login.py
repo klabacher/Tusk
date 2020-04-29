@@ -8,13 +8,13 @@ def versionhandler(client, arg):
 
 @Instance.register("/login")
 def loginhandler(client, arg):
-    Penguin.PID = arg[1]
-    Penguin.token = arg[2]
+    client.PID = arg[1]
+    client.token = arg[2]
     print(client)
     client.sendLine("[S_LOGINDEBUG]|Got /login command from user")
     client.sendLine("[S_LOGINDEBUG]|Successfully verified credentials server-side")
     client.sendLine("[S_LOGINDEBUG]|Finalizing login, creating final user object")
-    client.sendLine("[S_LOGIN]|"+str(Penguin.PID)+"|")
+    client.sendLine("[S_LOGIN]|"+str(client.PID)+"|")
     client.sendLine("[S_WORLDTYPE]|0|1|0")
     client.sendLine("[S_WORLD]|13434341|clubpenguin_town_en_3|0:113140001|0|none|0|crowdcontrol|clubpenguin_town_en_3|0|200.5991|0")
     client.sendLine("[W_BASEASSETURL]| ")
@@ -24,4 +24,4 @@ def loginhandler(client, arg):
     client.sendLine("[M_REPORT]|16|Max Place Instances|0|100")
     client.sendLine("[M_REPORT]|0|Max Users|0|100")
     client.PID = arg[1]
-    client.sendLine("[W_ASSETSCOMPLETE]|"+str(Penguin.PID)+"|")
+    client.sendLine("[W_ASSETSCOMPLETE]|"+str(client.PID)+"|")

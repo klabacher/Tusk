@@ -58,7 +58,7 @@ def readyhandler(client, arg):
     client.sendLine("[P_TILE]|4||0|0|1|0:5|blankpurpl|0|0|0|0:7940010")
     client.sendLine("[P_TILE]|5||0|0|1|0:6|blankwhite|0|0|0|0:7940011")
     client.sendLine("[P_PHYSICS]|0|0|0|0|0|0|0|1")
-    client.sendLine("[P_ASSETSCOMPLETE]|"+str(Penguin.PID))
+    client.sendLine("[P_ASSETSCOMPLETE]|"+str(client.PID))
 
 @Instance.register("/place_ready")
 def versionhandler(client, arg):
