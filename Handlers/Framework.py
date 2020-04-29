@@ -27,6 +27,7 @@ def addToQueue(PID,element):
         startGame(PID)
     queueStruct = (PID,element)
     queue.append(queueStruct)
+    Penguin.inQueue = True
 
 def matchFound(element):
     hasFire = True if element == 'fire' else False
@@ -45,5 +46,6 @@ def matchFound(element):
         return False
 
 def startGame(PID):
+    Penguin.inQueue = False
     #todo: send game started to all players
     return True

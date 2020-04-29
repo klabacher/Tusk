@@ -15,6 +15,7 @@ class Penguin(Spheniscidae):
         self.nextCardXp = 0
         self.element = None
         self.tipsEnabled = True
+        self.inQueue = False
         self.logger.info("Penguin class instantiated")
 
     def connectionLost(self, reason):
