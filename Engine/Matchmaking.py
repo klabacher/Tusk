@@ -2,7 +2,7 @@
 Queue = []
 
 def addToQueue(client):
-    if matchFound(element):
+    if matchFound(client.element):
         startGame(client)
         return
     queueStruct = [client.PID,client.element]
@@ -54,7 +54,7 @@ def startGame(client):
 def getNameById(client):
     #todo: get player name from pip on DB
     # client.pid found name haha
-    return str(client.pid)
+    return str(client.PID)
 
 def getIndexByElement(element):
     for i in range(len(Queue)):
