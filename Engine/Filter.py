@@ -39,7 +39,8 @@ class Spheniscidae(LineOnlyReceiver, object):
                 Instance.call(self, command, "args")
         elif Adata.startswith("#receivedFromFramework") == True:
             parsed = Adata.split("#receivedFromFramework")
-            Instance.call(self, "Framework", parsed[1])
+            for x in parsed:
+                Instance.call(self, "Framework", x)
         else:
             print("else")
 

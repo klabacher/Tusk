@@ -20,7 +20,8 @@ def readyhandler(client, arg):
     try:
         parsedJson = json.loads(arg)
     except:
-        parsedJson = json.loads(arg[0])
+        print("Error parsing json")
+        return
     if parsedJson['triggerName']=="mmElementSelected":
         client.element = parsedJson['element']
         client.tipsEnabled = parsedJson['tipMode']
