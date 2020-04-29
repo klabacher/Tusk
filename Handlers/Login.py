@@ -1,5 +1,6 @@
 from Engine.Filter import Instance
 from Engine.Penguin import Penguin
+
 @Instance.register("/version")
 def foo(client, arg):
     print(client)
@@ -7,13 +8,13 @@ def foo(client, arg):
 
 @Instance.register("/login")
 def foonix(client, arg):
-    self.PID = arg[1]
-    self.token = arg[2]
+    Penguin.PID = arg[1]
+    Penguin.token = arg[2]
     print(client)
     client.sendLine("[S_LOGINDEBUG]|Got /login command from user")
     client.sendLine("[S_LOGINDEBUG]|Successfully verified credentials server-side")
     client.sendLine("[S_LOGINDEBUG]|Finalizing login, creating final user object")
-    client.sendLine("[S_LOGIN]|"+str(self.PID)+"|")
+    client.sendLine("[S_LOGIN]|"+str(Penguin.PID)+"|")
     client.sendLine("[S_WORLDTYPE]|0|1|0")
     client.sendLine("[S_WORLD]|13434341|clubpenguin_town_en_3|0:113140001|0|none|0|crowdcontrol|clubpenguin_town_en_3|0|200.5991|0")
     client.sendLine("[W_BASEASSETURL]| ")
@@ -22,4 +23,4 @@ def foonix(client, arg):
     client.sendLine("[M_REPORT]|12|Max Place Size|0|500")
     client.sendLine("[M_REPORT]|16|Max Place Instances|0|100")
     client.sendLine("[M_REPORT]|0|Max Users|0|100")
-    client.sendLine("[W_ASSETSCOMPLETE]|"+str(self.PID)+"|")
+    client.sendLine("[W_ASSETSCOMPLETE]|"+str(Penguin.PID)+"|")
