@@ -11,7 +11,7 @@ class Penguin(Spheniscidae, penguin.Penguin):
         self.position = None
         self.nextPosition = None
         self.nextAttack = None
-
+        s
         self.health = 0
         self.nextCardXp = 0
         self.element = None
@@ -23,10 +23,10 @@ class Penguin(Spheniscidae, penguin.Penguin):
 
     def connectionLost(self, reason):
         #todo add conlost handling
-        self.logger.warning("Connection Lost! "+str(reason))
-        super(Penguin, self).connectionLost(reason)
         if self.inQueue:
             removeFromQueue(self)
+        self.logger.warning("Connection Lost! "+str(reason))
+        super(Penguin, self).connectionLost(reason)
 
     def getPowerCards(self,element):
         #todo: get player powercards from db
