@@ -17,8 +17,6 @@ import Handlers
 class CJSnowFactory(Factory):
     def __init__(self, *args, **kwargs):
         self.serverName = kwargs["server"]
-        self.id = None
-        self.SWID = None
         self.config = config
         engineString = "postgresql+{0}://{1}:{2}@{3}/{4}".format(
             self.config["Database"]["Driver"].lower(),
