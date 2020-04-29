@@ -7,7 +7,7 @@ class Penguin(Spheniscidae, penguin.Penguin):
         self.PID = None
         self.objectId = 0
         self.token = None
-
+        self.session = session
         self.position = None
         self.nextPosition = None
         self.nextAttack = None

@@ -1,4 +1,4 @@
-
+from Data.penguin import Penguin as DataPenguin
 Queue = []
 
 def addToQueue(client):
@@ -52,7 +52,9 @@ def startGame(client):
     return True
 
 def getNameById(client, pid):
-    return client.PID
+    player = client.session.query().filter_by(id= pid).scalar()
+    print(player)
+    return "jjgay"
 
 def getIndexByElement(element):
     for i in range(len(Queue)):
