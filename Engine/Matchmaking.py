@@ -4,6 +4,7 @@ Queue = []
 def addToQueue(client):
     if matchFound(client):
         startGame(client)
+        return
     queueStruct = [client.PID,client.element]
     Queue.append(queueStruct)
     print(f"Penguin {client.PID} on queue with {client.element}")
