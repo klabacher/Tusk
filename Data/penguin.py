@@ -3,7 +3,6 @@ from functools import lru_cache
 
 from data import AbstractDataCollection, db
 
-
 class Penguin(db.Model):
     __tablename__ = 'penguin'
 
@@ -80,97 +79,3 @@ class Penguin(db.Model):
     rejection_es = db.Column(db.Boolean, nullable=False, server_default=db.text("false"))
     rejection_de = db.Column(db.Boolean, nullable=False, server_default=db.text("false"))
     rejection_ru = db.Column(db.Boolean, nullable=False, server_default=db.text("false"))
-
-    def __init__(self, *args, **kwargs):
-        self.inventory = None
-        self.permissions = None
-        self.igloos = None
-        self.igloo_rooms = None
-        self.furniture = None
-        self.flooring = None
-        self.locations = None
-        self.stamps = None
-        self.cards = None
-        self.puffles = None
-        self.puffle_items = None
-        self.buddies = None
-        self.buddy_requests = None
-        self.character_buddies = None
-        self.ignore = None
-
-        super().__init__(*args, **kwargs)
-
-    @lru_cache()
-    def safe_nickname(self, language_bitmask):
-        return self.nickname if self.approval & language_bitmask else "P" + str(self.id)
-
-    async def status_field_set(self, field_bitmask):
-        if (self.status_field & field_bitmask) == 0:
-            await self.update(status_field=self.status_field ^ field_bitmask).apply()
-
-    def status_field_get(self, field_bitmask):
-        return (self.status_field & field_bitmask) != 0
-
-    @property
-    @lru_cache()
-    def age(self):
-        return (datetime.now() - self.registration_date).days
-
-    @property
-    @lru_cache()
-    def approval(self):
-        return int(f'{self.approval_ru * 1}{self.approval_de * 1}0{self.approval_es * 1}'
-                   f'{self.approval_fr * 1}{self.approval_pt * 1}{self.approval_en * 1}', 2)
-
-    @property
-    @lru_cache()
-    def rejection(self):
-        return int(f'{self.rejection_ru * 1}{self.rejection_de * 1}0{self.rejection_es * 1}'
-                   f'{self.rejection_fr * 1}{self.rejection_pt * 1}{self.rejection_en * 1}', 2)
-
-
-class ActivationKey(db.Model):
-    __tablename__ = 'activation_key'
-
-    penguin_id = db.Column(db.ForeignKey('penguin.id', ondelete='CASCADE', onupdate='CASCADE'), primary_key=True,
-                           nullable=False)
-    activation_key = db.Column(db.CHAR(255), primary_key=True, nullable=False)
-
-
-class PenguinMembership(db.Model):
-    __tablename__ = 'penguin_membership'
-
-    penguin_id = db.Column(db.ForeignKey('penguin.id', ondelete='CASCADE', onupdate='CASCADE'), primary_key=True,
-                           nullable=False)
-    start = db.Column(db.DateTime, primary_key=True, nullable=False)
-    expires = db.Column(db.DateTime)
-    start_aware = db.Column(db.Boolean, server_default=db.text("false"))
-    expires_aware = db.Column(db.Boolean, server_default=db.text("false"))
-    expired_aware = db.Column(db.Boolean, server_default=db.text("false"))
-
-
-class Login(db.Model):
-    __tablename__ = 'login'
-
-    id = db.Column(db.Integer, primary_key=True, server_default=db.text("nextval('\"login_id_seq\"'::regclass)"))
-    penguin_id = db.Column(db.ForeignKey('penguin.id', ondelete='CASCADE', onupdate='CASCADE'), nullable=False)
-    date = db.Column(db.DateTime, nullable=False, server_default=db.text("now()"))
-    ip_hash = db.Column(db.CHAR(255), nullable=False)
-    minutes_played = db.Column(db.Integer, nullable=False, server_default=db.text("0"))
-
-
-class EpfComMessage(db.Model):
-    __tablename__ = 'epf_com_message'
-
-    message = db.Column(db.Text, nullable=False)
-    character_id = db.Column(db.ForeignKey('character.id', ondelete='RESTRICT', onupdate='CASCADE'), nullable=False)
-    date = db.Column(db.DateTime, nullable=False, server_default=db.text("now()"))
-
-
-class CfcDonation(db.Model):
-    __tablename__ = 'cfc_donation'
-
-    penguin_id = db.Column(db.ForeignKey('penguin.id', ondelete='CASCADE', onupdate='CASCADE'), nullable=False)
-    coins = db.Column(db.Integer, nullable=False)
-    charity = db.Column(db.Integer, nullable=False)
-    date = db.Column(db.DateTime, nullable=False, server_default=db.text("now()"))

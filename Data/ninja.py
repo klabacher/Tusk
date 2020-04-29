@@ -1,6 +1,7 @@
 from data import AbstractDataCollection, db
 
 
+
 class Card(db.Model):
     __tablename__ = 'card'
 
