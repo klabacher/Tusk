@@ -47,7 +47,7 @@ def startGame(client):
         waterId = client.PID
     client.sendLine("[W_PLACELIST]|0:10001|snow_1|3 player battle scenario|1|9|5|0|1|8|0|")
     client.sendLine('[UI_CLIENTEVENT]|101|receivedJson|{"action":"jsonPayload","jsonPayload":{"1":"'+str(getNameById(fireId))+'","2":"'+str(getNameById(waterId))+'","4":"'+str(getNameById(snowId))+'"},"targetWindow":"http://media.localhost/game/mpassets/minigames/cjsnow/en_US/deploy/swf/ui/windows/cardjitsu_snowplayerselect.swf","triggerName":"matchFound","type":"immediateAction"}')
-    print("Game started with players Fire:{} Snow:{} Water:{}".format(fireId,SnowId,WaterId))
+    print("Game started with players Fire:{} Snow:{} Water:{}".format(fireId,snowId,waterId))
     #todo: send game started to all players
     return True
 
