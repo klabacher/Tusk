@@ -22,7 +22,8 @@ class Penguin(Spheniscidae):
         #todo add conlost handling
         self.logger.warning("Connection Lost! "+str(reason))
         super(Penguin, self).connectionLost(reason)
-        removeFromQueue(self.PID)
+        if self.inQueue:
+            removeFromQueue(self.PID)
 
     def getUsername():
         #todo: get player username from db
