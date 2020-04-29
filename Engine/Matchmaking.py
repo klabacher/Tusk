@@ -46,15 +46,13 @@ def startGame(client):
     else:
         waterId = client.PID
     client.sendLine("[W_PLACELIST]|0:10001|snow_1|3 player battle scenario|1|9|5|0|1|8|0|")
-    client.sendLine('[UI_CLIENTEVENT]|101|receivedJson|{"action":"jsonPayload","jsonPayload":{"1":"'+str(getNameById(fireId))+'","2":"'+str(getNameById(waterId))+'","4":"'+str(getNameById(snowId))+'"},"targetWindow":"http://media.localhost/game/mpassets/minigames/cjsnow/en_US/deploy/swf/ui/windows/cardjitsu_snowplayerselect.swf","triggerName":"matchFound","type":"immediateAction"}')
-    print("Game started with players Fire:{} Snow:{} Water:{}".format(fireId,snowId,waterId))
+    client.sendLine('[UI_CLIENTEVENT]|101|receivedJson|{"action":"jsonPayload","jsonPayload":{"1":"'+str(getNameById(client, fireId))+'","2":"'+str(getNameById(client, waterId))+'","4":"'+str(getNameById(client, snowId))+'"},"targetWindow":"http://media.localhost/game/mpassets/minigames/cjsnow/en_US/deploy/swf/ui/windows/cardjitsu_snowplayerselect.swf","triggerName":"matchFound","type":"immediateAction"}')
+    print("Game started with players Fire:{} Snow:{} Water:{}".format(fireId,SnowId,WaterId))
     #todo: send game started to all players
     return True
 
-def getNameById(client):
-    #todo: get player name from pip on DB
-    # client.pid found name haha
-    return "Klagay"
+def getNameById(client, pid):
+    return client.PID
 
 def getIndexByElement(element):
     for i in range(len(Queue)):
