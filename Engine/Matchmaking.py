@@ -34,15 +34,15 @@ def startGame(client):
     hasSnow = True if client.element == 'snow' else False
     hasWater = True if client.element == 'water' else False
     if not hasFire:
-        fireId = getIndexByElement("fire")
+        fireId = queue[getIndexByElement("fire")][0]
     else:
         fireId = client.PID
     if not hasSnow:
-        snowId = getIndexByElement("snow")
+        snowId = queue[getIndexByElement("snow")][0]
     else:
         snowId = client.PID
     if not hasWater:
-        waterId = getIndexByElement("water")
+        waterId = queue[getIndexByElement("water")][0]
     else:
         waterId = client.PID
     client.sendLine("[W_PLACELIST]|0:10001|snow_1|3 player battle scenario|1|9|5|0|1|8|0|")
