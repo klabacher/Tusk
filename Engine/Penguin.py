@@ -11,7 +11,6 @@ class Penguin(Spheniscidae, penguin.Penguin):
         self.position = None
         self.nextPosition = None
         self.nextAttack = None
-        s
         self.health = 0
         self.nextCardXp = 0
         self.element = None
