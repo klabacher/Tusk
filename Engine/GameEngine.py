@@ -1,4 +1,4 @@
-from Utils.GameData import GameData
+from Utils.GameData import GameData as GD
 class GameEngine(object):
     def __init__(self, fireclient, waterclient, snowclient):
         self.fclient = fireclient
@@ -6,7 +6,6 @@ class GameEngine(object):
         self.sclient = snowclient
         self.mSpeed = 100
         self.map = None
-        self.gamedata = GameData
         print(self.sclient)
         print(self.wclient)
         print(self.fclient)
@@ -19,18 +18,23 @@ class GameEngine(object):
 
 
 class Enemy(GameEngine, object):
-    def __init__(self, name, id, hp, Erange, power, round):
+    def __init__(self, name, id, round):
         self.name = name
         self.id = id
-        self.hp = hp
-        self.range = Erange
-        self.power = power
+        self.idDesign = GD[name]["IDDesign"]
+        self.hp = GD[name]["HP"]
+        self.range = GD[name]["Range"]
+        self.power = GD[name]["Attack"]
+        self.canMove = GD[name]["Move"]
+        self.AniAttack = GD[name]["AniAttack"]
+        self.AniMove = GD[name]["AniMove"]
         self.mSpeed = 100
         self.round = round
-      
-        self.AStag(f"[O_HERE]|{self.id}|0:{self.id}|x|y|128|1|0|0|0||0:1|0|1|0")
+        self.AStag(f"[O_HERE]|{self.id}|0:{self.idDesign}|x|y|128|1|0|0|0||0:1|0|1|0")
 
     def move(self, x, y):
-        tag = f"[O_SLIDE]|id do gameobject|{x}|{y}|128|{self.mSpeed}"
+        tag = f"[O_SLIDE]|{self.id}|{x}|{y}|128|{self.mSpeed}"
+        movetag = f"[O_ANIM]|{self.id}|0:{self.AniMove}|loop|700|1|0|13|2|0|0"
         self.AStag(tag)
+        self.AStag(movetag)
 

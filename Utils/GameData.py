@@ -6,6 +6,9 @@ GameData= {
                 "Range":2,
                 "Attack":8,
                 "Move":2,
+                "AniAttack":"",
+                "AniMove":"",
+                "AniSpecial":"",
                 "BasePosition":{
                     "z":10,
                     "y":10
@@ -16,6 +19,9 @@ GameData= {
                 "Range":3,
                 "Attack":6,
                 "Move":3,
+                "AniAttack":"",
+                "AniMove":"",
+                "AniSpecial":"",
                 "BasePosition":{
                     "z":10,
                     "y":10
@@ -26,6 +32,9 @@ GameData= {
                 "Range":1,
                 "Attack":10,
                 "Move":2,
+                "AniAttack":"",
+                "AniMove":"",
+                "AniSpecial":"",
                 "BasePosition":{
                     "z":10,
                     "y":10
@@ -35,8 +44,11 @@ GameData= {
         "Enemies":{
             "Sly":{
                 "HP":30,
+                "IDDesign":"12",
                 "Range":3,
                 "Attack":4,
+                "AniAttack":"",
+                "AniMove":"",
                 "Move":3,
                 "Round1":{
                     "z":10,
@@ -53,6 +65,9 @@ GameData= {
             },
             "Tank":{
                 "HP":60,
+                "IDDesign":"12",
+                "AniAttack":"",
+                "AniMove":"",
                 "Range":1,
                 "Attack":10,
                 "Move":1,
@@ -71,6 +86,9 @@ GameData= {
             },
             "Scrap":{
                 "HP":45,
+                "IDDesign":"12",
+                "AniAttack":"",
+                "AniMove":"",
                 "Range":2,
                 "Attack":5,
                 "Move":2,
