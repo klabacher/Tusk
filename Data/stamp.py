@@ -1,4 +1,4 @@
-from data import AbstractDataCollection, db
+from Data import AbstractDataCollection, db
 
 
 class Stamp(db.Model):

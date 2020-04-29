@@ -1,7 +1,7 @@
 from datetime import datetime
 from functools import lru_cache
 
-from data import AbstractDataCollection, db
+from Data import AbstractDataCollection, db
 
 class Penguin(db.Model):
     __tablename__ = 'penguin'

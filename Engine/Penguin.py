@@ -1,6 +1,7 @@
 from Engine.Filter import Spheniscidae
 from Engine.Matchmaking import removeFromQueue
-class Penguin(Spheniscidae):
+from Data import penguin
+class Penguin(Spheniscidae, penguin.Penguin):
     def __init__(self, session, spirit):
         super(Penguin, self).__init__(session, spirit)
         self.PID = None
@@ -17,6 +18,8 @@ class Penguin(Spheniscidae):
         self.tipsEnabled = True
         self.inQueue = False
         self.logger.info("Penguin class instantiated")
+
+        
 
     def connectionLost(self, reason):
         #todo add conlost handling
