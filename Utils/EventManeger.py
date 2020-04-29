@@ -3,6 +3,7 @@
 class EventHandler():
     def __init__(self):
         self.handlers = {}
+        self.clients = []
     
     def printt(self):
         print(self.handlers)
@@ -25,5 +26,6 @@ class EventHandler():
 
             return handler
         return registerhandler
+
 
 Instance = EventHandler()
