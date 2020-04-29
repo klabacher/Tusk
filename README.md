@@ -133,5 +133,5 @@ If you need any help just contact us!
 
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
 
-- **[MIT license](http://opensource.org/licenses/mit-license.php)**
-- Copyright 2020 © <a href="http://fvcproductions.com" target="_blank">Tusk</a>.
+- **[MIT license](https://github.com/klabacher/Tusk/blob/master/LICENSE)**
+- Copyright 2020 © <a href="" target="_blank">Tusk</a>.
