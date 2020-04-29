@@ -1,7 +1,7 @@
 from datetime import datetime
 from functools import lru_cache
 
-from houdini.data import db
+from data import AbstractDataCollection, db
 
 
 class Penguin(db.Model):
