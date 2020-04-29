@@ -1,6 +1,8 @@
 from Engine.Filter import Instance
 from Engine.Penguin import Penguin
 
+queue = []
+
 @Instance.register("/intro_anim_done")
 def versionhandler(client, arg):
     print(client)
@@ -18,3 +20,30 @@ def readyhandler(client, arg):
     if parsedJson['triggerName']=="mmElementSelected":
         Penguin.element = parsedJson['element']
         Penguin.tipsEnabled = parsedJson['tipMode']
+        addToQueue(Penguin.PID,Penguin.element)
+
+def addToQueue(PID,element):
+    if matchFound(element):
+        startGame(PID)
+    queueStruct = (PID,element)
+    queue.append(queueStruct)
+
+def matchFound(element):
+    hasFire = True if element == 'fire' else False
+    hasSnow = True if element == 'snow' else False
+    hasWater = True if element == 'water' else False
+    for x in queue:
+        if hasFire == False and x[1]=="fire":
+            hasFire = True
+        if hasSnow == False and x[1]=="snow":
+            hasSnow = True
+        if hasWater == False and x[1]=="water":
+            hasWater = True
+    if hasFire == True and hasSnow == True and hasWater == True:
+        return True
+    else:
+        return False
+
+def startGame(PID):
+    #todo: send game started to all players
+    return True
