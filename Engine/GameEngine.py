@@ -1,6 +1,4 @@
-import json
-
-json.load(Utils.GameData)
+from Utils.GameData import GameData
 class GameEngine(object):
     def __init__(self, fireclient, waterclient, snowclient):
         self.fclient = fireclient
@@ -8,13 +6,14 @@ class GameEngine(object):
         self.sclient = snowclient
         self.mSpeed = 100
         self.map = None
+        self.gamedata = GameData
         print(self.sclient)
         print(self.wclient)
         print(self.fclient)
         # sly, tank, scrap
     
     def AStag(self, line):
-        clients = [self.fireclient, self.waterclient, self.snowclient]
+        clients = [self.fclient, self.wclient, self.sclient]
         for c in clients:
             c.sendLine(line)
 
@@ -28,51 +27,6 @@ class Enemy(GameEngine, object):
         self.power = power
         self.mSpeed = 100
         self.round = round
-        if name == "sky":
-            self.design = 1
-            if self.round == 1:
-                self.z = 1
-                self.x = 2
-            elif self.round == 2:
-                self.z = 1
-                self.x = 2
-            elif self.round == 3:
-                self.z = 1
-                self.x = 2
-            else:
-                self.z = 1
-                self.x = 2
-                print("Not supported most than 3 rounds")
-        elif name == "tank":
-            self.design = 2
-            if self.round == 1:
-                self.z = 1
-                self.x = 2
-            elif self.round == 2:
-                self.z = 1
-                self.x = 2
-            elif self.round == 3:
-                self.z = 1
-                self.x = 2
-            else:
-                self.z = 1
-                self.x = 2
-                print("Not supported most than 3 rounds")
-        elif name == "scrap":
-            self.design = 3
-            if self.round == 1:
-                self.z = 1
-                self.x = 2
-            elif self.round == 2:
-                self.z = 1
-                self.x = 2
-            elif self.round == 3:
-                self.z = 1
-                self.x = 2
-            else:
-                self.z = 1
-                self.x = 2
-                print("Not supported most than 3 rounds")
       
         self.AStag(f"[O_HERE]|{self.id}|0:{self.id}|x|y|128|1|0|0|0||0:1|0|1|0")
 
