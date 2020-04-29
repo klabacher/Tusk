@@ -33,7 +33,7 @@ def readyhandler(client, arg):
         addToQueue(client)
     if 'action' in parsedJson:
         if parsedJson['action'] == "funnel_prepare_to_battle_4":
-            client.sendLine('[UI_CLIENTEVENT]|'+str(client.PID)+'|receivedJson|{"type":"playAction","action":"closeWindow","targetWindow":"http://media.localhost/game/mpassets/minigames/cjsnow/en_US/deploy/swf/ui/windows/cardjitsu_snowplayerselect.swf"}')
+            client.sendLine('[UI_CLIENTEVENT]|101|receivedJson|{"type":"playAction","action":"closeWindow","targetWindow":"http://media.localhost/game/mpassets/minigames/cjsnow/en_US/deploy/swf/ui/windows/cardjitsu_snowplayerselect.swf"}')
             client.sendLine("[O_GONE]|4")
             client.sendLine("[W_PLACE]|1:10001|8|1")
             client.sendLine("[W_INPUT]|use|0:10|2|3|0|use|")
