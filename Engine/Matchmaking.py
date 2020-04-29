@@ -2,7 +2,7 @@
 Queue = []
 
 def addToQueue(client):
-    if matchFound(client):
+    if matchFound(element):
         startGame(client)
         return
     queueStruct = [client.PID,client.element]
