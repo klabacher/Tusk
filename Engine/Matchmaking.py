@@ -1,4 +1,4 @@
-from Data.penguin import Penguin as DataPenguin
+from Data.penguin import PenguinDB
 Queue = []
 
 def addToQueue(client):
@@ -46,15 +46,15 @@ def startGame(client):
     else:
         waterId = client.PID
     client.sendLine("[W_PLACELIST]|0:10001|snow_1|3 player battle scenario|1|9|5|0|1|8|0|")
-    client.sendLine('[UI_CLIENTEVENT]|101|receivedJson|{"action":"jsonPayload","jsonPayload":{"1":"'+str(getNameById(client, fireId))+'","2":"'+str(getNameById(client, waterId))+'","4":"'+str(getNameById(client, snowId))+'"},"targetWindow":"http://media.localhost/game/mpassets/minigames/cjsnow/en_US/deploy/swf/ui/windows/cardjitsu_snowplayerselect.swf","triggerName":"matchFound","type":"immediateAction"}')
+    client.sendLine('[UI_CLIENTEVENT]|'+str(client.PID)+'|receivedJson|{"action":"jsonPayload","jsonPayload":{"1":"'+str(getNameById(client, fireId))+'","2":"'+str(getNameById(client, waterId))+'","4":"'+str(getNameById(client, snowId))+'"},"targetWindow":"http://media.localhost/game/mpassets/minigames/cjsnow/en_US/deploy/swf/ui/windows/cardjitsu_snowplayerselect.swf","triggerName":"matchFound","type":"immediateAction"}')
     print("Game started with players Fire:{} Snow:{} Water:{}".format(fireId,snowId,waterId))
     #todo: send game started to all players
     return True
 
 def getNameById(client, pid):
-    player = client.session.query().filter_by(id= pid).scalar()
-    print(player)
-    return "jjgay"
+    player = client.session.query(PenguinDB).filter_by(id=pid).first()
+    client.name = player.username
+    return player.username
 
 def getIndexByElement(element):
     for i in range(len(Queue)):

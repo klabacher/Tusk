@@ -8,12 +8,12 @@ queue = []
 @Instance.register("/intro_anim_done")
 def versionhandler(client, arg):
     print(client)
-    client.sendLine('[UI_CLIENTEVENT]|101|receivedJson|{"type":"immediateAction","action":"setWorldId","worldId":1510202}')
-    client.sendLine('[UI_CLIENTEVENT]|101|receivedJson|{"type":"immediateAction","action":"setBaseAssetUrl","baseAssetUrl":"http://media.localhost/game/mpassets/"}')
-    client.sendLine('[UI_CLIENTEVENT]|101|receivedJson|{"type":"immediateAction","action":"setFontPath","defaultFontPath":"http://media.localhost/game/mpassets//fonts/"}')
-    client.sendLine('[UI_CLIENTEVENT]|101|receivedJson|{"type":"playAction","action":"skinRoomToRoom","url":"http://media.localhost/game/mpassets/minigames/cjsnow/en_US/deploy/swf/ui/windows/../assets/cjsnow_loadingscreenassets.swf", "className":"", "variant":0 }')
-    client.sendLine('[UI_CLIENTEVENT]|101|receivedJson|{"action":"loadWindow","assetPath":"","initializationPayload":[null],"layerName":"bottomLayer","loadDescription":"","type":"playAction","windowUrl":"http://media.localhost/game/mpassets/minigames/cjsnow/en_US/deploy/swf/ui/windows/cardjitsu_snowerrorhandler.swf","xPercent":0,"yPercent":0}')
-    client.sendLine('[UI_CLIENTEVENT]|101|receivedJson|{"action":"loadWindow","assetPath":"","initializationPayload":{"game":"snow","name":"'+str(getNameById(client, client.PID))+'","powerCardsFire":'+str(client.getPowerCards("fire"))+',"powerCardsSnow":'+str(client.getPowerCards("snow"))+',"powerCardsWater":'+str(client.getPowerCards("water"))+'},"layerName":"topLayer","loadDescription":"","type":"playAction","windowUrl":"http://media.localhost/game/mpassets/minigames/cjsnow/en_US/deploy/swf/ui/windows/cardjitsu_snowplayerselect.swf","xPercent":0,"yPercent":0}')
+    client.sendLine('[UI_CLIENTEVENT]|'+str(client.PID)+'|receivedJson|{"type":"immediateAction","action":"setWorldId","worldId":1510202}')
+    client.sendLine('[UI_CLIENTEVENT]|'+str(client.PID)+'|receivedJson|{"type":"immediateAction","action":"setBaseAssetUrl","baseAssetUrl":"http://media.localhost/game/mpassets/"}')
+    client.sendLine('[UI_CLIENTEVENT]|'+str(client.PID)+'|receivedJson|{"type":"immediateAction","action":"setFontPath","defaultFontPath":"http://media.localhost/game/mpassets//fonts/"}')
+    client.sendLine('[UI_CLIENTEVENT]|'+str(client.PID)+'|receivedJson|{"type":"playAction","action":"skinRoomToRoom","url":"http://media.localhost/game/mpassets/minigames/cjsnow/en_US/deploy/swf/ui/windows/../assets/cjsnow_loadingscreenassets.swf", "className":"", "variant":0 }')
+    client.sendLine('[UI_CLIENTEVENT]|'+str(client.PID)+'|receivedJson|{"action":"loadWindow","assetPath":"","initializationPayload":[null],"layerName":"bottomLayer","loadDescription":"","type":"playAction","windowUrl":"http://media.localhost/game/mpassets/minigames/cjsnow/en_US/deploy/swf/ui/windows/cardjitsu_snowerrorhandler.swf","xPercent":0,"yPercent":0}')
+    client.sendLine('[UI_CLIENTEVENT]|'+str(client.PID)+'|receivedJson|{"action":"loadWindow","assetPath":"","initializationPayload":{"game":"snow","name":"'+str(getNameById(client, client.PID))+'","powerCardsFire":'+str(client.getPowerCards("fire"))+',"powerCardsSnow":'+str(client.getPowerCards("snow"))+',"powerCardsWater":'+str(client.getPowerCards("water"))+'},"layerName":"topLayer","loadDescription":"","type":"playAction","windowUrl":"http://media.localhost/game/mpassets/minigames/cjsnow/en_US/deploy/swf/ui/windows/cardjitsu_snowplayerselect.swf","xPercent":0,"yPercent":0}')
 
 @Instance.register("Framework")
 def readyhandler(client, arg):
@@ -33,7 +33,7 @@ def readyhandler(client, arg):
         addToQueue(client)
     if 'action' in parsedJson:
         if parsedJson['action'] == "funnel_prepare_to_battle_4":
-            client.sendLine('[UI_CLIENTEVENT]|101|receivedJson|{"type":"playAction","action":"closeWindow","targetWindow":"http://media.localhost/game/mpassets/minigames/cjsnow/en_US/deploy/swf/ui/windows/cardjitsu_snowplayerselect.swf"}')
+            client.sendLine('[UI_CLIENTEVENT]|'+str(client.PID)+'|receivedJson|{"type":"playAction","action":"closeWindow","targetWindow":"http://media.localhost/game/mpassets/minigames/cjsnow/en_US/deploy/swf/ui/windows/cardjitsu_snowplayerselect.swf"}')
             client.sendLine("[O_GONE]|4")
             client.sendLine("[W_PLACE]|1:10001|8|1")
             client.sendLine("[W_INPUT]|use|0:10|2|3|0|use|")
@@ -129,7 +129,7 @@ def readyhandler(client, arg):
             client.sendLine("[S_LOADSPRITE]|0:1840010")
             client.sendLine("[O_HERE]|12|0:1|4.5|2.5|0|1|0|0|0||0:1|0|1|0")
         if parsedJson['triggerName']=="roomToRoomMinTime":
-            client.sendLine('[UI_CLIENTEVENT]|101|receivedJson|{"action":"loadWindow","assetPath":"","initializationPayload":[null],"layerName":"bottomLayer","loadDescription":"","type":"playAction","windowUrl":"http://media.localhost/game/mpassets/minigames/cjsnow/en_US/deploy/swf/ui/windows/cardjitsu_snowclose.swf","xPercent":1,"yPercent":0}')
+            client.sendLine('[UI_CLIENTEVENT]|'+str(client.PID)+'|receivedJson|{"action":"loadWindow","assetPath":"","initializationPayload":[null],"layerName":"bottomLayer","loadDescription":"","type":"playAction","windowUrl":"http://media.localhost/game/mpassets/minigames/cjsnow/en_US/deploy/swf/ui/windows/cardjitsu_snowclose.swf","xPercent":1,"yPercent":0}')
             client.sendLine("[O_HERE]|13|0:1|4.5|2.5|0|1|0|0|0||0:1|0|1|0")
             client.sendLine("[O_SPRITE]|10|0:100380|0|")
             client.sendLine("[O_SPRITE]|11|0:1|0|")

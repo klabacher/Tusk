@@ -1,7 +1,7 @@
 from Engine.Filter import Spheniscidae
 from Engine.Matchmaking import removeFromQueue
 from Data import penguin
-class Penguin(Spheniscidae, penguin.Penguin):
+class Penguin(Spheniscidae):
     def __init__(self, session, spirit):
         super(Penguin, self).__init__(session, spirit)
         self.PID = None
