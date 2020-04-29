@@ -40,7 +40,7 @@ def startGame(client):
     if not hasSnow:
         snowId = getIndexByElement("snow")
     else:
-        fireId = client.PID
+        snowId = client.PID
     if not hasWater:
         waterId = getIndexByElement("water")
     else:
@@ -54,7 +54,7 @@ def startGame(client):
 def getNameById(client):
     #todo: get player name from pip on DB
     # client.pid found name haha
-    return str(client.PID)
+    return "Klagay"
 
 def getIndexByElement(element):
     for i in range(len(Queue)):
