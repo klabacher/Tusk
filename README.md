@@ -58,7 +58,6 @@ python app.py
 ```py
 @Instance.register("tagname")
 def functionname(client, arg):
-    print(client)
     client.sendLine("[TAG]|arg1|arg2")
 ```
 
