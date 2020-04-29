@@ -101,4 +101,4 @@ def getQueueIndex(PID):
 
 def removeFromQueue(client):
     del Queue[getQueueIndex(client.PID)]
-    print(f"Removing {client.nickname}")
+    print(f"Removing {client.PID}")
