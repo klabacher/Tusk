@@ -13,8 +13,7 @@ class Spheniscidae(LineOnlyReceiver, object):
         self.session = session
         self.server = server
 
-        # Defined once the client requests it (see handleRandomKey)
-        self.randomKey = None
+
 
     def dataReceived(self, line):
         Adata = line.decode("utf-8")
@@ -33,6 +32,16 @@ class Spheniscidae(LineOnlyReceiver, object):
                 login_arg = login[1:]
                 Instance.call(self, place_com, place_arg)
                 Instance.call(self, login_com, login_arg)
+            elif Adata.startswith("/intro_anim_done"):
+                ps = Adata.split()
+                if ps[1] == "#receivedFromFramework":
+                    Instance.call(self, "Framework", ps[2])
+                elif ps[3] == "#receivedFromFramework":
+                    Instance.call(self, "Framework", ps[4])
+                elif ps[5] == "#receivedFromFramework":
+                    Instance.call(self, "Framework", ps[6])
+                else:
+                    Instance.call(self, "Framework", ps[1])
             elif Adata.startswith("/anim_done") ==  True:
                 ps = Adata.split()
                 if ps[3] == "/anim_done":
