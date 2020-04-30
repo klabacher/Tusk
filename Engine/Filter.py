@@ -45,17 +45,18 @@ class Spheniscidae(LineOnlyReceiver, object):
                         print("Framework was not sent with intro_anim_done")
             elif Adata.startswith("/anim_done") ==  True:
                 ps = Adata.split()
-                if ps[3] == "/anim_done":
-                    arg = []
-                    arg.append(ps[4])
-                    arg.append(ps[5])
-                    Instance.call(self, "/anim_done", arg)
-                elif ps[6] == "/anim_done":
-                    arg = []
-                    arg.append(ps[7])
-                    arg.append(ps[8])
-                    Instance.call(self, "/anim_done", arg)
-                else:
+                try:
+                    if ps[3] == "/anim_done":
+                        arg = []
+                        arg.append(ps[4])
+                        arg.append(ps[5])
+                        Instance.call(self, "/anim_done", arg)
+                    if ps[6] == "/anim_done":
+                        arg = []
+                        arg.append(ps[7])
+                        arg.append(ps[8])
+                        Instance.call(self, "/anim_done", arg)
+                except:
                     Instance.call(self, "/anim_done", ps)
             else:
                 command = packet_split[0]
