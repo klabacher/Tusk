@@ -37,13 +37,13 @@ class Spheniscidae(LineOnlyReceiver, object):
                 ps = Adata.split()
                 if ps[3] == "/anim_done":
                     arg = []
-                    arg.append[4]
-                    arg.append[5]
+                    arg.append(ps[4])
+                    arg.append(ps[5])
                     Instance.call(self, "/anim_done", arg)
                 elif ps[6] == "/anim_done":
                     arg = []
-                    arg.append[7]
-                    arg.append[8]
+                    arg.append(ps[7])
+                    arg.append(ps[8])
                     Instance.call(self, "/anim_done", arg)
                 else:
                     Instance.call(self, "/anim_done", ps)
