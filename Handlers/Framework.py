@@ -12,7 +12,7 @@ def readyhandler(client, arg):
     try:
         parsedJson = json.loads(arg)
     except Exception as Error:
-        logger.error(f"Error: {Error} parsing json: {arg}")
+        logger.error(f"(PID: {client.PID})Error: {Error} parsing json: {arg}")
         return
     if parsedJson['triggerName']=="mmCancel":
         logger.info("player leaving the queue")
