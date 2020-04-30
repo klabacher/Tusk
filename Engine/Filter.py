@@ -8,7 +8,7 @@ class Spheniscidae(LineOnlyReceiver, object):
     delimiter = b"\x00" or b"\r\n"
 
     def __init__(self, session, server):
-        self.logger = logging.getLogger("Cjsnow")
+        self.logger = logging.getLogger("cjsnow")
 
         self.session = session
         self.server = server
@@ -39,16 +39,16 @@ class Spheniscidae(LineOnlyReceiver, object):
                 Instance.call(self, command, "args")
         elif Adata.startswith("#receivedFromFramework") == True:
             parsed = Adata.split("#receivedFromFramework")
-            for x in parsed:
-                Instance.call(self, "Framework", x)
+            self.logger.info(f"#receivedFromFramework call, passing {parsed[1]}")
+            Instance.call(self, "Framework", parsed[1])
         else:
-            print("else")
+            self.logger.warning(f"Nothing filtered from {str(Adata)}")
 
     def sendPolicyFile(self):
         super(Spheniscidae, self).sendLine("<cross-domain-policy><allow-access-from domain='*' to-ports='*' /></cross-domain-policy>".encode("Utf-8"))
-        self.logger.debug("Outgoing Police")
+        self.logger.info("Outgoing Police")
 
     def sendLine(self, line):
         tag = line+"\r\n"
-        print("Outgoing Tag: {0}".format(line))
+        self.logger.info("Outgoing Tag: {0}".format(line))
         self.transport.write(tag.encode("utf-8"))

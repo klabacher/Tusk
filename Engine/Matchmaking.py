@@ -1,9 +1,10 @@
 from Data.penguin import PenguinDB
-
+import logging
 from Engine.GameEngine import GameEngine
 
 Queue = []
 
+logger = logging.getLogger("cjsnow")
 def addToQueue(client):
     if matchFound(client.element):
         startGame(client)
@@ -25,7 +26,7 @@ def matchFound(element):
         if hasWater == False and x[1]=="water":
             hasWater = True
     if hasFire == True and hasSnow == True and hasWater == True:
-        print("A match was found")
+        logger.info("A match was found")
         return True
     else:
         return False

@@ -18,8 +18,6 @@ class Penguin(Spheniscidae):
         self.inQueue = False
         self.logger.info("Penguin class instantiated")
 
-        
-
     def connectionLost(self, reason):
         #todo add conlost handling
         if self.inQueue:
@@ -30,9 +28,9 @@ class Penguin(Spheniscidae):
     def getPowerCards(self,element):
         #todo: get player powercards from db
         if element == "snow":
-            return 34
+            return 22
         if element == "water":
             return 12
         if element == "fire":
-            return 52
+            return 5
         return 0

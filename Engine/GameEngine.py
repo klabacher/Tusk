@@ -16,7 +16,6 @@ class GameEngine(object):
         for c in clients:
             c.sendLine(line)
 
-
 class Enemy(GameEngine, object):
     def __init__(self, name, id, round):
         self.name = name
