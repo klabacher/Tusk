@@ -20,7 +20,7 @@ class Spheniscidae(LineOnlyReceiver, object):
         Adata = line.decode("utf-8")
         self.logger.info("Data: " + Adata)
         if Adata.startswith("<"):
-            self.sendPolicyFile()
+            self.sendPolicyFile()      
         elif Adata.startswith("/") == True:
             packet_split = Adata.split()
             if Adata.startswith("/place_context") == True:
@@ -33,6 +33,20 @@ class Spheniscidae(LineOnlyReceiver, object):
                 login_arg = login[1:]
                 Instance.call(self, place_com, place_arg)
                 Instance.call(self, login_com, login_arg)
+            elif Adata.startswith("/anim_done") ==  True:
+                ps = Adata.split()
+                if ps[3] == "/anim_done":
+                    arg = []
+                    arg.append[4]
+                    arg.append[5]
+                    Instance.call(self, "/anim_done", arg)
+                elif ps[6] == "/anim_done":
+                    arg = []
+                    arg.append[7]
+                    arg.append[8]
+                    Instance.call(self, "/anim_done", arg)
+                else:
+                    Instance.call(self, "/anim_done", ps)
             else:
                 command = packet_split[0]
                 args = packet_split[1:]
