@@ -104,5 +104,5 @@ def removeFromQueue(client):
     try:
         del Queue[getQueueIndex(client.PID)]
         logger.warning(f"Removing {client.PID}")
-    except:
-        logger.error("Not Removed")
+    except Exception as Error:
+        logger.error(f"Not Removed {client.PID} Because got exception: {Error}")
