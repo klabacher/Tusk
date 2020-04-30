@@ -3,14 +3,12 @@ from Engine.Penguin import Penguin
 
 @Instance.register("/version")
 def versionhandler(client, arg):
-    print(client)
     client.sendLine("[S_VERSION]|FY15-20150206 (4954)r|73971eecbd8923f695303b2cd04e5f70|Tue Feb  3 14:11:56 PST 2015|/var/lib/jenkins/jobs/BuildPlatform/workspace/metaserver_source/dimg")
 
 @Instance.register("/login")
 def loginhandler(client, arg):
     client.PID = arg[1]
     client.token = arg[2]
-    print(client)
     client.sendLine("[S_LOGINDEBUG]|Got /login command from user")
     client.sendLine("[S_LOGINDEBUG]|Successfully verified credentials server-side")
     client.sendLine("[S_LOGINDEBUG]|Finalizing login, creating final user object")
@@ -23,5 +21,4 @@ def loginhandler(client, arg):
     client.sendLine("[M_REPORT]|12|Max Place Size|0|500")
     client.sendLine("[M_REPORT]|16|Max Place Instances|0|100")
     client.sendLine("[M_REPORT]|0|Max Users|0|100")
-    client.PID = arg[1]
     client.sendLine("[W_ASSETSCOMPLETE]|"+str(client.PID)+"|")

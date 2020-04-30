@@ -36,13 +36,13 @@ class Spheniscidae(LineOnlyReceiver, object):
             else:
                 command = packet_split[0]
                 args = packet_split[1:]
-                Instance.call(self, command, "args")
+                Instance.call(self, command, args)
         elif Adata.startswith("#receivedFromFramework") == True:
             parsed = Adata.split("#receivedFromFramework")
             self.logger.info(f"#receivedFromFramework call, passing {parsed[1]}")
             Instance.call(self, "Framework", parsed[1])
         else:
-            self.logger.warning(f"Nothing filtered from {str(Adata)}")
+            self.logger.error(f"Nothing filtered from {str(Adata)}")
 
     def sendPolicyFile(self):
         super(Spheniscidae, self).sendLine("<cross-domain-policy><allow-access-from domain='*' to-ports='*' /></cross-domain-policy>".encode("Utf-8"))

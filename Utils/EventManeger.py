@@ -1,7 +1,8 @@
-#from Engine.Penguin import Penguin
+import logging
 
 class EventHandler():
     def __init__(self):
+        self.logger = logging.getLogger("cjsnow")
         self.handlers = {}
         self.clients = []
     
@@ -9,20 +10,20 @@ class EventHandler():
         print(self.handlers)
 
     def call(self, client, type, arg):
-        print("call called" + type)
+        self.logger.info(f"Called {type} with {arg}")
         if type in self.handlers:
             for h in self.handlers[type]:
-                retur = h(client, arg)
+                h(client, arg)
         
 
     def register(self, type):
         def registerhandler(handler):
             if type in self.handlers:
                 self.handlers[type].append(handler)
-                print("Registered for EH: " + str(type))
+                self.logger.info("Append for EH: " + str(type))
             else:
                 self.handlers[type] = [handler]
-                print("Registered for EH: " + str(type))
+                self.logger.info("Registered for EH: " + str(type))
 
             return handler
         return registerhandler

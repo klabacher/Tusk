@@ -32,7 +32,7 @@ def matchFound(element):
         return False
 
 def startGame(client):
-    print("Game Starting")
+    logger.info("Start Game called")
     client.inQueue = False
     hasFire = True if client.element == 'fire' else False
     hasSnow = True if client.element == 'snow' else False
@@ -79,9 +79,8 @@ def startGame(client):
     removeFromQueue(fireclient)
     removeFromQueue(snowclient)
     removeFromQueue(waterclient)
-    print("Game started with players Fire:{} Snow:{} Water:{}".format(fireId,snowId,waterId))
+    logger.info("Game started with players Fire:{} Snow:{} Water:{}".format(fireId,snowId,waterId))
     GameEngine(fireclient, waterclient, snowclient)
-    #todo: send game started to all players
     return True
 
 def getNameById(client, pid):
@@ -104,6 +103,6 @@ def getQueueIndex(PID):
 def removeFromQueue(client):
     try:
         del Queue[getQueueIndex(client.PID)]
-        print(f"Removing {client.PID}")
+        logger.warning(f"Removing {client.PID}")
     except:
-        print("Not Removed")
+        logger.error("Not Removed")
