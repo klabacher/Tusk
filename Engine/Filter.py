@@ -19,7 +19,7 @@ class Spheniscidae(LineOnlyReceiver, object):
         Adata = line.decode("utf-8")
         self.logger.info("Data: " + Adata)
         if Adata.startswith("<"):
-            self.sendPolicyFile()      
+            self.sendPolicyFile()
         elif Adata.startswith("/") == True:
             packet_split = Adata.split()
             if Adata.startswith("/place_context") == True:
@@ -34,14 +34,15 @@ class Spheniscidae(LineOnlyReceiver, object):
                 Instance.call(self, login_com, login_arg)
             elif Adata.startswith("/intro_anim_done"):
                 ps = Adata.split()
-                if ps[1] == "#receivedFromFramework":
-                    Instance.call(self, "Framework", ps[2])
-                elif ps[3] == "#receivedFromFramework":
-                    Instance.call(self, "Framework", ps[4])
-                elif ps[5] == "#receivedFromFramework":
-                    Instance.call(self, "Framework", ps[6])
-                else:
-                    Instance.call(self, "Framework", ps[1])
+                try:
+                    if ps[1] == "#receivedFromFramework":
+                        Instance.call(self, "Framework", ps[2])
+                    if ps[3] == "#receivedFromFramework":
+                        Instance.call(self, "Framework", ps[4])
+                    if ps[5] == "#receivedFromFramework":
+                        Instance.call(self, "Framework", ps[6])
+                except:
+                        print("Framework was not sent with intro_anim_done")
             elif Adata.startswith("/anim_done") ==  True:
                 ps = Adata.split()
                 if ps[3] == "/anim_done":
