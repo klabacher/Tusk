@@ -6,6 +6,7 @@ class Penguin(Spheniscidae):
         super(Penguin, self).__init__(session, spirit)
         self.PID = None
         self.objectId = 0
+        self.name = None
         self.token = None
         self.session = session
         self.position = None
