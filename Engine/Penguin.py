@@ -23,6 +23,8 @@ class Penguin(Spheniscidae):
         self.inQueue = False
         self.hasDisconnected = False
         self.usedPowerCard = False
+        self.powerCardX=0
+        self.powerCardY=0
         self.logger.info("Penguin class instantiated")
 
     def connectionLost(self, reason):
