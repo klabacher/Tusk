@@ -10,6 +10,8 @@ class GameEngine(object):
 
     def loadGame():
         self.map = randrange(1, 3)
+        loadAllSpritesAndMap(self.map)
+        spawnPenguins()
         while not self.hasWonGame() and not self.hasLost():
             self.doNextRound()
         self.goToPayout()
