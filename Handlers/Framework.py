@@ -3,6 +3,8 @@ from Engine.Penguin import Penguin
 from Engine.Matchmaking import addToQueue,getNameById,removeFromQueue
 import json, logging
 import time
+from Utils.GameData import GameData as GD
+
 
 logger = logging.getLogger("cjsnow")
 
@@ -24,6 +26,10 @@ def readyhandler(client, arg):
     if parsedJson['triggerName']=="mmElementSelected":
         client.element = parsedJson['element']
         client.tipsEnabled = parsedJson['tipMode']
+        client.hp = GD["Ninjas"][client.element]["HP"]
+        client.range = GD["Ninjas"][client.element]["Range"]
+        client.power = GD["Ninjas"][client.element]["Attack"]
+        client.move = GD["Ninjas"][client.element]["Move"]
         addToQueue(client)
     if parsedJson["triggerName"]=="windowManagerReady":
         client.sendLine('[UI_CLIENTEVENT]|101|receivedJson|{"type":"immediateAction","action":"setWorldId","worldId":1510202}')

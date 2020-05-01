@@ -3,6 +3,7 @@ import logging
 from Engine.GameEngine import GameEngine
 
 Queue = []
+Games = []
 
 logger = logging.getLogger("cjsnow")
 def addToQueue(client):
@@ -80,7 +81,8 @@ def startGame(client):
     removeFromQueue(waterclient)
     removeFromQueue(fireclient)
     logger.info("Game started with players Fire:{} Snow:{} Water:{}".format(fireId,snowId,waterId))
-    GameEngine(fireclient, waterclient, snowclient)
+    game = GameEngine(fireclient, waterclient, snowclient)
+    Games.append(game)
     return True
 
 def getNameById(client, pid):

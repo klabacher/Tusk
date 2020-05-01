@@ -1,7 +1,7 @@
 
 GameData= {
         "Ninjas":{
-            "Fire":{
+            "fire":{
                 "HP":100,
                 "Range":2,
                 "Attack":8,
@@ -10,11 +10,11 @@ GameData= {
                 "AniMove":"",
                 "AniSpecial":"",
                 "BasePosition":{
-                    "z":10,
+                    "x":10,
                     "y":10
                 }
             },
-            "Snow":{
+            "water":{
                 "HP":100,
                 "Range":3,
                 "Attack":6,
@@ -23,11 +23,11 @@ GameData= {
                 "AniMove":"",
                 "AniSpecial":"",
                 "BasePosition":{
-                    "z":10,
+                    "x":10,
                     "y":10
                 }
             },
-            "Water":{
+            "snow":{
                 "HP":100,
                 "Range":1,
                 "Attack":10,
@@ -36,7 +36,7 @@ GameData= {
                 "AniMove":"",
                 "AniSpecial":"",
                 "BasePosition":{
-                    "z":10,
+                    "x":10,
                     "y":10
                 }
             }
@@ -51,15 +51,15 @@ GameData= {
                 "AniMove":"",
                 "Move":3,
                 "Round1":{
-                    "z":10,
+                    "x":10,
                     "y":10
                 },
                 "Round2":{
-                    "z":10,
+                    "x":10,
                     "y":10
                 },
                 "Round3":{
-                    "z":10,
+                    "x":10,
                     "y":10
                 }
             },
@@ -72,15 +72,15 @@ GameData= {
                 "Attack":10,
                 "Move":1,
                 "Round1":{
-                    "z":10,
+                    "x":10,
                     "y":10
                 },
                 "Round2":{
-                    "z":10,
+                    "x":10,
                     "y":10
                 },
                 "Round3":{
-                    "z":10,
+                    "x":10,
                     "y":10
                 }
             },
@@ -93,18 +93,17 @@ GameData= {
                 "Attack":5,
                 "Move":2,
                 "Round1":{
-                    "z":10,
+                    "x":10,
                     "y":10
                 },
                 "Round2":{
-                    "z":10,
+                    "x":10,
                     "y":10
                 },
                 "Round3":{
-                    "z":10,
+                    "x":10,
                     "y":10
                 }
             }
         }
     }
-

@@ -9,14 +9,19 @@ class Penguin(Spheniscidae):
         self.name = None
         self.token = None
         self.session = session
-        self.position = None
+        self.positionX = 0
+        self.positionY = 0
         self.nextPosition = None
         self.nextAttack = None
-        self.health = 0
+        self.hp = None
+        self.range = None
+        self.power = None
+        self.move = None
         self.nextCardXp = 0
         self.element = None
         self.tipsEnabled = True
         self.inQueue = False
+        self.hasDisconnected = False
         self.logger.info("Penguin class instantiated")
 
     def connectionLost(self, reason):
