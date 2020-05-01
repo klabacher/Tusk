@@ -9,45 +9,45 @@ class GameEngine(object):
         loadGame()
 
     def loadGame():
-        chooseRandomMap()
-        while not hasWonGame() and not hasLost():
-            doNextRound()
-        goToPayout()
+        self.map = randrange(1, 3)
+        while not self.hasWonGame() and not self.hasLost():
+            self.doNextRound()
+        self.goToPayout()
         return
 
     def doNextRound():
-        playRoundTitle(self.round-1)
+        self.playRoundTitle(self.round-1)
         for x in GD["Enemy"]:
             if x["Round"+self.round][x] is not -1:
                 createAndSpawnEnemy(x)
-        while not hasWonRound() and not hasLost():
-            showGrid()
+        while not self.hasWonRound() and not self.hasLost():
+            self.showGrid()
             if not self.fclient.hasDisconnected:
-                getMoves(self.fclient)
+                self.getMoves(self.fclient)
             if not self.wclient.hasDisconnected:
-                getMoves(self.wclient)
+                self.getMoves(self.wclient)
             if not self.sclient.hasDisconnected:
-                getMoves(self.sclient)
-            startTimer()
-            hideTimer()
-            hideGrid()
+                self.getMoves(self.sclient)
+            self.startTimer()
+            self.hideTimer()
+            self.hideGrid()
             if not self.fclient.hasDisconnected and not self.fclient.usedPowerCard:
-                moveAndAttack(self.fclient)
+                self.moveAndAttack(self.fclient)
             if not self.wclient.hasDisconnected and not self.wclient.usedPowerCard:
-                moveAndAttack(self.wclient)
+                self.moveAndAttack(self.wclient)
             if not self.sclient.hasDisconnected and not self.sclient.usedPowerCard:
-                moveAndAttack(self.sclient)
+                self.moveAndAttack(self.sclient)
             if self.fclient.usedPowerCard:
-                playPowerCard(fclient)
+                self.playPowerCard(fclient)
             if self.wclient.usedPowerCard:
-                playPowerCard(wclient)
+                self.playPowerCard(wclient)
             if self.sclient.usedPowerCard:
-                playPowerCard(sclient)
+                self.playPowerCard(sclient)
             for x in GD["Enemy"]:
                 if x["Round"+self.round][x] is not -1:
                     #todo: check if hp <=0
-                    moveAndAttackEnemy(x)
-        if hasWonRound()
+                    self.moveAndAttackEnemy(x)
+        if self.hasWonRound()
             self.round+=1
 
 
