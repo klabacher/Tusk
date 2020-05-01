@@ -34,11 +34,11 @@ class GameEngine(object):
             self.startTimer()
             self.hideTimer()
             self.hideGrid()
-            if not self.fclient.hasDisconnected and not self.fclient.usedPowerCard:
+            if not self.fclient.hasDisconnected and not self.fclient.usedPowerCard and not self.fclient.hp==0:
                 self.moveAndAttack(self.fclient)
-            if not self.wclient.hasDisconnected and not self.wclient.usedPowerCard:
+            if not self.wclient.hasDisconnected and not self.wclient.usedPowerCard and not self.wclient.hp==0:
                 self.moveAndAttack(self.wclient)
-            if not self.sclient.hasDisconnected and not self.sclient.usedPowerCard:
+            if not self.sclient.hasDisconnected and not self.sclient.usedPowerCard and not self.sclient.hp==0:
                 self.moveAndAttack(self.sclient)
             if self.checkForCombo:
                 playCombo()
