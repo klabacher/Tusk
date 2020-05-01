@@ -2,6 +2,7 @@ from Engine.Filter import Instance
 from Engine.Penguin import Penguin
 from Engine.Matchmaking import addToQueue,getNameById,removeFromQueue
 import json, logging
+import time
 
 logger = logging.getLogger("cjsnow")
 
@@ -18,6 +19,7 @@ def readyhandler(client, arg):
         logger.info("player leaving the queue")
         removeFromQueue(client)
     if parsedJson['triggerName']=="quit":
+        client.sendLine('[UI_CLIENTEVENT]|101|receivedJson|{"type":"immediateAction","action":"quit"}')
         logger.warning("player leaving the game")
     if parsedJson['triggerName']=="mmElementSelected":
         client.element = parsedJson['element']
@@ -33,12 +35,13 @@ def readyhandler(client, arg):
     if 'action' in parsedJson:
         if parsedJson['action'] == "funnel_prepare_to_battle_4":
             logger.info("Handling funnel_prepare_to_battle_4")
+            time.sleep(1)
             client.sendLine('[UI_CLIENTEVENT]|101|receivedJson|{"type":"playAction","action":"closeWindow","targetWindow":"http://media.localhost/game/mpassets/minigames/cjsnow/en_US/deploy/swf/ui/windows/cardjitsu_snowplayerselect.swf"}')
             client.sendLine("[O_GONE]|4")
-            client.sendLine("[W_PLACE]|1:10001|8|1")
+            client.sendLine("[W_PLACE]|0:10001|8|1")
             client.sendLine("[W_INPUT]|use|0:10|2|3|0|use|")
-            client.sendLine("[W_INPUT]|touch-the-terrain|0:8600033|1|6|0|path_terrain|")
-            client.sendLine("[W_INPUT]|mouse-the-terrain|0:8600033|1|3|0|path_terrain|")
+            client.sendLine("[W_INPUT]|touch-the-terrain|0:8600033|1|6|0|/path_terrain|")
+            client.sendLine("[W_INPUT]|mouse-the-terrain|0:8600033|1|3|0|/path_terrain|")
             client.sendLine("[P_MAPBLOCK]|t|1|1|iVBORw0KGgoAAAANSUhEUgAAAAkAAAAFCAAAAACyOJm3AAAAHUlEQVQImWNgZeRkZARidgZGCGBnZ2CFMVHEoOoADJEAhIsKxDUAAAAASUVORK5CYII=")
             client.sendLine("[P_MAPBLOCK]|h|1|1|iVBORw0KGgoAAAANSUhEUgAAAAoAAAAGCAAAAADfm1AaAAAADklEQVQImWNogAMG8pgA3m8eAacnkzQAAAAASUVORK5CYII=")
             client.sendLine("[P_ZOOMLIMIT]|-1.000000|-1.000000")
