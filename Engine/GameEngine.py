@@ -17,8 +17,9 @@ class GameEngine(object):
 
     def doNextRound():
         self.playRoundTitle(self.round-1)
+        #wait for received animation done
         for x in GD["Enemy"]:
-            if x["Round"+self.round][x] is not -1:
+            if x["Round"+self.round]["x"] is not -1:
                 createAndSpawnEnemy(x)
         while not self.hasWonRound() and not self.hasLost():
             self.showGrid()
