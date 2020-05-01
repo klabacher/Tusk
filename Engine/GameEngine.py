@@ -1,17 +1,19 @@
 from Utils.GameData import GameData as GD
+import time
+
 class GameEngine(object):
     def __init__(self, fireclient, waterclient, snowclient):
-        self.fclient = fireclient
-        self.wclient = waterclient
-        self.sclient = snowclient
+        self.fclient = fireclient #object id 64
+        self.wclient = waterclient #object id 65
+        self.sclient = snowclient #object id 66
         self.round = 1
         self.map = None
         loadGame()
 
     def loadGame():
         self.map = randrange(1, 3)
-        loadAllSpritesAndMap(self.map)
-        spawnPenguins()
+        self.loadAllSpritesAndMap(self.map)
+        self.spawnPenguins()
         while not self.hasWonGame() and not self.hasLost():
             self.doNextRound()
         self.goToPayout()
@@ -19,6 +21,7 @@ class GameEngine(object):
 
     def doNextRound():
         self.playRoundTitle(self.round-1)
+        time.sleep(3)
         #wait for received animation done
         for x in GD["Enemy"]:
             if x["Round"+self.round]["x"] is not -1:
@@ -55,12 +58,63 @@ class GameEngine(object):
         if self.hasWonRound()
             self.round+=1
 
+    def loadAllSpritesAndMap():
+        return
+
+    def spawnPenguins():
+        return
+
+    def hasWonGame():
+        return
+
+    def hasLost():
+        return
+
+    def goToPayout():
+        return
+
+    def playRoundTitle():
+        return
+
+    def hasWonRound():
+        return
+
+    def showGrid():
+        return
+
+    def getMoves(client):
+        return
+
+    def startTimer():
+        return
+
+    def hideTimer():
+        return
+
+    def hideGrid():
+        return
+
+    def moveAndAttack(client):
+        return
+
+    def playCombo():
+        return
+
+    def playPowerCard(client):
+        return
+
+    def moveAndAttackEnemy(enemy):
+        return
+        
+    def createAndSpawnEnemy(enemy):
+        return
+
 
 
 class Enemy(object):
-    def __init__(self, name, id, round):
+    def __init__(self, name):
         self.name = name
-        self.id = id
+        self.id = id["Enemy"][name]["id"]
         self.hp = GD["Enemy"][name]["HP"]
         self.range = GD["Enemy"][name]["Range"]
         self.power = GD["Enemy"][name]["Attack"]

@@ -81,7 +81,7 @@ def startGame(client):
     removeFromQueue(fireclient)
     logger.info("Game started with players Fire:{} Snow:{} Water:{}".format(fireId,snowId,waterId))
     game = GameEngine(fireclient, waterclient, snowclient)
-    return True
+    return
 
 def getNameById(client, pid):
     player = client.session.query(PenguinDB).filter_by(id=pid).first()
