@@ -27,12 +27,18 @@ class GameEngine(object):
                 startTimer()
                 hideTimer()
                 hideGrid()
-                if not self.fclient.hasDisconnected:
+                if not self.fclient.hasDisconnected and not self.fclient.usedPowerCard:
                     moveAndAttack(self.fclient)
-                if not self.wclient.hasDisconnected:
+                if not self.wclient.hasDisconnected and not self.wclient.usedPowerCard:
                     moveAndAttack(self.wclient)
-                if not self.sclient.hasDisconnected:
+                if not self.sclient.hasDisconnected and not self.sclient.usedPowerCard:
                     moveAndAttack(self.sclient)
+                if self.fclient.usedPowerCard:
+                    playPowerCard(fclient)
+                if self.wclient.usedPowerCard:
+                    playPowerCard(wclient)
+                if self.sclient.usedPowerCard:
+                    playPowerCard(sclient)
                 for x in GD["Enemy"]:
                     if x["Round"+self.round][x] is not -1:
                         #todo: check if hp <=0
