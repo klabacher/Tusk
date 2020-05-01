@@ -4,7 +4,6 @@ class EventHandler():
     def __init__(self):
         self.logger = logging.getLogger("cjsnow")
         self.handlers = {}
-        self.clients = []
     
     def printt(self):
         print(self.handlers)
@@ -14,6 +13,14 @@ class EventHandler():
         if type in self.handlers:
             for h in self.handlers[type]:
                 h(client, arg)
+
+    def delete(self, type):
+        self.logger.info(f"Try to delete {type}")
+        if type in self.handlers:
+            try:
+                del self.handlers[type]
+            except Exception:
+                self.logger.error(f"Cant delete {type} because {Exception}")
         
 
     def register(self, type):
