@@ -6,48 +6,50 @@ class GameEngine(object):
         self.sclient = snowclient
         self.round = 1
         self.map = None
+        loadGame()
 
     def loadGame():
+        chooseRandomMap()
+        while not hasWonGame() and not hasLost():
+            doNextRound()
+        goToPayout()
         return
 
     def doNextRound():
-        if not hasWonGame() and not hasLost():
-            playRoundTitle(self.round-1)
+        playRoundTitle(self.round-1)
+        for x in GD["Enemy"]:
+            if x["Round"+self.round][x] is not -1:
+                createAndSpawnEnemy(x)
+        while not hasWonRound() and not hasLost():
+            showGrid()
+            if not self.fclient.hasDisconnected:
+                getMoves(self.fclient)
+            if not self.wclient.hasDisconnected:
+                getMoves(self.wclient)
+            if not self.sclient.hasDisconnected:
+                getMoves(self.sclient)
+            startTimer()
+            hideTimer()
+            hideGrid()
+            if not self.fclient.hasDisconnected and not self.fclient.usedPowerCard:
+                moveAndAttack(self.fclient)
+            if not self.wclient.hasDisconnected and not self.wclient.usedPowerCard:
+                moveAndAttack(self.wclient)
+            if not self.sclient.hasDisconnected and not self.sclient.usedPowerCard:
+                moveAndAttack(self.sclient)
+            if self.fclient.usedPowerCard:
+                playPowerCard(fclient)
+            if self.wclient.usedPowerCard:
+                playPowerCard(wclient)
+            if self.sclient.usedPowerCard:
+                playPowerCard(sclient)
             for x in GD["Enemy"]:
                 if x["Round"+self.round][x] is not -1:
-                    createAndSpawnEnemy(x)
-            while not hasWonRound() and not hasLost():
-                showGrid()
-                if not self.fclient.hasDisconnected:
-                    getMoves(self.fclient)
-                if not self.wclient.hasDisconnected:
-                    getMoves(self.wclient)
-                if not self.sclient.hasDisconnected:
-                    getMoves(self.sclient)
-                startTimer()
-                hideTimer()
-                hideGrid()
-                if not self.fclient.hasDisconnected and not self.fclient.usedPowerCard:
-                    moveAndAttack(self.fclient)
-                if not self.wclient.hasDisconnected and not self.wclient.usedPowerCard:
-                    moveAndAttack(self.wclient)
-                if not self.sclient.hasDisconnected and not self.sclient.usedPowerCard:
-                    moveAndAttack(self.sclient)
-                if self.fclient.usedPowerCard:
-                    playPowerCard(fclient)
-                if self.wclient.usedPowerCard:
-                    playPowerCard(wclient)
-                if self.sclient.usedPowerCard:
-                    playPowerCard(sclient)
-                for x in GD["Enemy"]:
-                    if x["Round"+self.round][x] is not -1:
-                        #todo: check if hp <=0
-                        moveAndAttackEnemy(x)
-            if hasWonRound()
-                self.round+=1
-        else:
-            goToPayout()
-        return
+                    #todo: check if hp <=0
+                    moveAndAttackEnemy(x)
+        if hasWonRound()
+            self.round+=1
+
 
 
 class Enemy(object):
