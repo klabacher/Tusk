@@ -313,9 +313,17 @@ class GameEngine(object):
         return
 
     def moveAndAttackEnemy(self,enemy):
+        time.sleep(2)
         return
 
     def createAndSpawnEnemy(self,enemy):
+        enemyObject = Enemy(enemy["name"],enemy["IDDesign"],enemy["HP"],enemy["Range"],enemy["Attack"],enemy["Move"])
+        roundEnemys.append(enemyObject)
+        self.sendToAllPlayers("[O_HERE]|"+str(enemyObject.id)+"|0:1|4.5|2.5|0|1|0|0|0||0:1|0|1|0")
+        self.sendToAllPlayers("[O_MOVE]|"+str(enemyObject.id)+"|"+str(enemyObject.getSpawn("x",self.round))+"|"+str(enemyObject.getSpawn("y",self.round))+"|128")
+        self.sendToAllPlayers("[O_ANIM]|"+str(enemyObject.id)+"|0:"+str(enemyObject.getAnim("spawn"))+"|play_once|800|1|0|12|1|0|0")
+        time.sleep(1)
+        self.sendToAllPlayers("[O_ANIM]|"+str(enemyObject.id)+"|0:"+str(enemyObject.getAnim("idle"))+"|loop|800|1|0|12|1|0|0")
         return
 
     def loadAllSpritesAndMap(self):
@@ -474,12 +482,18 @@ class GameEngine(object):
 
 
 class Enemy(object):
-    def __init__(self, name):
+    def __init__(self, name,id,hp,range,power,move):
         self.name = name
-        self.id = id["Enemy"][name]["id"]
-        self.hp = GD["Enemies"][name]["HP"]
-        self.range = GD["Enemies"][name]["Range"]
-        self.power = GD["Enemies"][name]["Attack"]
-        self.move = GD["Enemies"][name]["Move"]
+        self.id = id
+        self.hp = hp
+        self.range = range
+        self.power = power
+        self.move = move
         self.positionX = 0
         self.positionY = 0
+
+    def getSpawn(self,cordinate,round):
+        return
+
+    def getAnim(self,anim):
+        return

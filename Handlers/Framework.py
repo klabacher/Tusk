@@ -142,7 +142,7 @@ def readyhandler(client, arg):
         logger.info("Handling roomToRoomMinTime")
         client.sendLine('[UI_CLIENTEVENT]|101|receivedJson|{"action":"loadWindow","assetPath":"","initializationPayload":[null],"layerName":"bottomLayer","loadDescription":"","type":"playAction","windowUrl":"http://media.localhost/game/mpassets/minigames/cjsnow/en_US/deploy/swf/ui/windows/cardjitsu_snowclose.swf","xPercent":1,"yPercent":0}')
         client.sendLine("[O_HERE]|13|0:1|4.5|2.5|0|1|0|0|0||0:1|0|1|0")
-        #client.sendLine("[O_SPRITE]|10|0:100380|0|")
+        client.sendLine("[O_SPRITE]|10|0:100380|0|")
         client.sendLine("[O_SPRITE]|11|0:1|0|")
         client.sendLine("[O_HERE]|14|0:1|0.5|0.9998|0|1|0|0|0|Actor14|0:30020|0|1|0")
         client.sendLine("[O_HERE]|15|0:1|0.5|1.9998|0|1|0|0|0|Actor15|0:30020|0|1|0")

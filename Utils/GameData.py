@@ -1,109 +1,112 @@
 
 GameData= {
-        "Ninjas":{
-            "fire":{
-                "HP":100,
-                "Range":2,
-                "Attack":8,
-                "Move":2,
-                "AniAttack":"",
-                "AniMove":"",
-                "AniSpecial":"",
-                "BasePosition":{
-                    "x":10,
-                    "y":10
-                }
-            },
-            "water":{
-                "HP":100,
-                "Range":3,
-                "Attack":6,
-                "Move":3,
-                "AniAttack":"",
-                "AniMove":"",
-                "AniSpecial":"",
-                "BasePosition":{
-                    "x":10,
-                    "y":10
-                }
-            },
-            "snow":{
-                "HP":100,
-                "Range":1,
-                "Attack":10,
-                "Move":2,
-                "AniAttack":"",
-                "AniMove":"",
-                "AniSpecial":"",
-                "BasePosition":{
-                    "x":10,
-                    "y":10
-                }
-            }
-        },
-        "Enemies":{
-            "Sly":{
-                "HP":30,
-                "IDDesign":"12",
-                "Range":3,
-                "Attack":4,
-                "AniAttack":"",
-                "AniMove":"",
-                "Move":3,
-                "Round1":{
-                    "x":10,
-                    "y":10
-                },
-                "Round2":{
-                    "x":10,
-                    "y":10
-                },
-                "Round3":{
-                    "x":10,
-                    "y":10
-                }
-            },
-            "Tank":{
-                "HP":60,
-                "IDDesign":"12",
-                "AniAttack":"",
-                "AniMove":"",
-                "Range":1,
-                "Attack":10,
-                "Move":1,
-                "Round1":{
-                    "x":10,
-                    "y":10
-                },
-                "Round2":{
-                    "x":10,
-                    "y":10
-                },
-                "Round3":{
-                    "x":10,
-                    "y":10
-                }
-            },
-            "Scrap":{
-                "HP":45,
-                "IDDesign":"12",
-                "AniAttack":"",
-                "AniMove":"",
-                "Range":2,
-                "Attack":5,
-                "Move":2,
-                "Round1":{
-                    "x":10,
-                    "y":10
-                },
-                "Round2":{
-                    "x":10,
-                    "y":10
-                },
-                "Round3":{
-                    "x":10,
-                    "y":10
-                }
-            }
-        }
-    }
+	"Ninjas": {
+		"fire": {
+			"HP": 100,
+			"Range": 2,
+			"Attack": 8,
+			"Move": 2,
+			"AniAttack": "",
+			"AniMove": "",
+			"AniSpecial": "",
+			"BasePosition": {
+				"x": 10,
+				"y": 10
+			}
+		},
+		"water": {
+			"HP": 100,
+			"Range": 3,
+			"Attack": 6,
+			"Move": 3,
+			"AniAttack": "",
+			"AniMove": "",
+			"AniSpecial": "",
+			"BasePosition": {
+				"x": 10,
+				"y": 10
+			}
+		},
+		"snow": {
+			"HP": 100,
+			"Range": 1,
+			"Attack": 10,
+			"Move": 2,
+			"AniAttack": "",
+			"AniMove": "",
+			"AniSpecial": "",
+			"BasePosition": {
+				"x": 10,
+				"y": 10
+			}
+		}
+	},
+	"Enemies": [{
+			"name": "Sly",
+			"HP": 30,
+			"IDDesign": "12",
+			"Range": 3,
+			"Attack": 4,
+			"AniAttack": "",
+			"AniMove": "",
+			"Move": 3,
+			"Round1": {
+				"x": 10,
+				"y": 10
+			},
+			"Round2": {
+				"x": 10,
+				"y": 10
+			},
+			"Round3": {
+				"x": 10,
+				"y": 10
+			}
+		},
+		{
+			"name": "Tank",
+			"HP": 60,
+			"IDDesign": "12",
+			"AniAttack": "",
+			"AniMove": "",
+			"Range": 1,
+			"Attack": 10,
+			"Move": 1,
+			"Round1": {
+				"x": 10,
+				"y": 10
+			},
+			"Round2": {
+				"x": 10,
+				"y": 10
+			},
+			"Round3": {
+				"x": 10,
+				"y": 10
+			}
+		},
+		{
+			"name": "Scrap",
+			"HP": 45,
+			"IDDesign": "12",
+			"AniAttack": "",
+			"AniMove": "",
+			"Range": 2,
+			"Attack": 5,
+			"Move": 2,
+			"Round1": {
+				"x": 10,
+				"y": 10
+			},
+			"Round2": {
+				"x": 10,
+				"y": 10
+			},
+			"Round3": {
+				"x": 10,
+				"y": 10
+			}
+		}
+	]
+
+}
