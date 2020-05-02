@@ -128,6 +128,8 @@ class GameEngine(object):
         return
 
     def getMoves(self,client):
+        pos1= client.positionX 
+        pos2= client.positionY
         if self.isValidMove(pos1-2,pos2):
             client.sendLine("[O_HERE]|400|0:100063|"+str(pos1-2)+"|"+str(pos2)+"|0|1|0|0|0||0:1|0|1|0")
         if self.isValidMove(pos1-1,pos2):
