@@ -224,5 +224,6 @@ def readyhandler(client, arg):
         client.sendLine("[O_ANIM]|100|0:8740002|loop|700|1|0|13|2|0|0")
         client.sendLine("[O_HERE]|233|0:100300|0|0|0|1|0|0|0||0:1|0|1|0")
         client.sendLine("[O_HERE]|101|0:100063|0.5|1|0|1|0|0|0||0:1|0|1|0")
+        client.sendLine('[UI_CLIENTEVENT]|101|receivedJson|{"action":"closeCjsnowRoomToRoom","moveToPlayerSelect":false}')
         if client.isHost:
             client.game.loadGame()

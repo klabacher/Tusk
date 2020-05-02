@@ -55,7 +55,7 @@ class GameEngine(object):
                 self.playPowerCard(self.wclient)
             if self.sclient.usedPowerCard:
                 self.playPowerCard(self.sclient)
-            for x in roundEnemys:
+            for x in self.roundEnemys:
                 if x.hp<=0:
                     self.moveAndAttackEnemy(x)
         if self.hasWonRound():
@@ -318,11 +318,9 @@ class GameEngine(object):
 
     def createAndSpawnEnemy(self,enemy):
         enemyObject = Enemy(enemy["name"],enemy["IDDesign"],enemy["HP"],enemy["Range"],enemy["Attack"],enemy["Move"])
-        roundEnemys.append(enemyObject)
+        self.roundEnemys.append(enemyObject)
         self.sendToAllPlayers("[O_HERE]|"+str(enemyObject.id)+"|0:1|4.5|2.5|0|1|0|0|0||0:1|0|1|0")
         self.sendToAllPlayers("[O_MOVE]|"+str(enemyObject.id)+"|"+str(enemyObject.getSpawn("x",self.round))+"|"+str(enemyObject.getSpawn("y",self.round))+"|128")
-        self.sendToAllPlayers("[O_ANIM]|"+str(enemyObject.id)+"|0:"+str(enemyObject.getAnim("spawn"))+"|play_once|800|1|0|12|1|0|0")
-        time.sleep(1)
         self.sendToAllPlayers("[O_ANIM]|"+str(enemyObject.id)+"|0:"+str(enemyObject.getAnim("idle"))+"|loop|800|1|0|12|1|0|0")
         return
 
@@ -482,7 +480,7 @@ class GameEngine(object):
 
 
 class Enemy(object):
-    def __init__(self, name,id,hp,range,power,move):
+    def __init__(self,name,id,hp,range,power,move):
         self.name = name
         self.id = id
         self.hp = hp
@@ -492,8 +490,20 @@ class Enemy(object):
         self.positionX = 0
         self.positionY = 0
 
+    def getEnemyData(self):
+        for x in GD["Enemies"]:
+            if x["name"] == self.name:
+                return x
+        return 0
+
     def getSpawn(self,cordinate,round):
-        return
+        enemyData = getEnemyData()
+        if cordinate == "x":
+            self.positionX = enemyData["Round"+str(round)]["x"]
+        if cordinate == "y":
+            self.positionY = enemyData["Round"+str(round)]["y"]
+        return enemyData["Round"+str(round)][coordinate]
 
     def getAnim(self,anim):
-        return
+        enemyData = getEnemyData()
+        return enemyData[anim+"Anim"]

@@ -44,67 +44,70 @@ GameData= {
 	"Enemies": [{
 			"name": "Sly",
 			"HP": 30,
-			"IDDesign": "12",
+			"IDDesign": 80,
 			"Range": 3,
 			"Attack": 4,
 			"AniAttack": "",
 			"AniMove": "",
 			"Move": 3,
+            "idleAnim": 100305,
 			"Round1": {
-				"x": 10,
-				"y": 10
+				"x": 8.5,
+				"y": 2
 			},
 			"Round2": {
-				"x": 10,
-				"y": 10
+				"x": 8.5,
+				"y": 2
 			},
 			"Round3": {
-				"x": 10,
-				"y": 10
+				"x": 8.5,
+				"y": 2
 			}
 		},
 		{
 			"name": "Tank",
 			"HP": 60,
-			"IDDesign": "12",
+			"IDDesign": 81,
 			"AniAttack": "",
 			"AniMove": "",
 			"Range": 1,
 			"Attack": 10,
 			"Move": 1,
+            "idleAnim": 100305,
 			"Round1": {
-				"x": 10,
-				"y": 10
+				"x": 8.5,
+				"y": 4
 			},
 			"Round2": {
-				"x": 10,
-				"y": 10
+				"x": 8.5,
+				"y": 4
 			},
 			"Round3": {
-				"x": 10,
-				"y": 10
+				"x": 8.5,
+				"y": 4
 			}
 		},
 		{
 			"name": "Scrap",
 			"HP": 45,
-			"IDDesign": "12",
+			"IDDesign": 82,
 			"AniAttack": "",
 			"AniMove": "",
 			"Range": 2,
 			"Attack": 5,
 			"Move": 2,
+            "idleAnim": 100305,
 			"Round1": {
-				"x": 10,
-				"y": 10
+				"x": 8.5,
+				"y": 5
 			},
 			"Round2": {
-				"x": 10,
-				"y": 10
+				"x": 8.5,
+				"y": 5
 			},
 			"Round3": {
-				"x": 10,
-				"y": 10
+				"x": 8.5,
+				"y": 5
 			}
 		}
 	]
