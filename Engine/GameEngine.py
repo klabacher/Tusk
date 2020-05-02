@@ -48,7 +48,7 @@ class GameEngine(object):
             if not self.sclient.hasDisconnected and not self.sclient.usedPowerCard and not self.sclient.hp<=0:
                 self.moveAndAttack(self.sclient)
             if self.numPowerCardsUsed()>1:
-                playCombo()
+                self.playCombo()
             if self.fclient.usedPowerCard:
                 self.playPowerCard(self.fclient)
             if self.wclient.usedPowerCard:
