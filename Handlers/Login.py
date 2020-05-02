@@ -26,4 +26,3 @@ def loginhandler(client, arg):
 @Instance.register("/path_terrain")
 def versionhandler(client, arg):
     client.sendLine('[UI_CLIENTEVENT]|101|receivedJson|{"action":"loadWindow","triggerName":"update","initializationPayload":{ "bonusCriteria":"no_ko","roundNumber":3 },"layerName":"topLayer","loadDescription":"","type":"playAction","windowUrl":"http://media.localhost/game/mpassets/minigames/cjsnow/en_US/deploy/swf/ui/windows/cardjitsu_snowrounds.swf","xPercent":0,"yPercent":0}')
-    client.sendLine('[UI_CLIENTEVENT]|101|receivedJson|{"action":"loadWindow","initializationPayload":{ "data":["snow","fire"],"snow":true,"fire":false,"sensei":false,"numSlices":2 },"water":"true","numSlices":2,"snow":true,"fire":false,"sensei":false ,"layerName":"topLayer","loadDescription":"","type":"playAction","windowUrl":"http://media.localhost/game/mpassets/minigames/cjsnow/en_US/deploy/swf/ui/windows/cardjitsu_snowcombos.swf","xPercent":0,"yPercent":0}')
