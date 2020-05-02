@@ -499,13 +499,13 @@ class Enemy(object):
         return 0
 
     def getSpawn(self,cordinate,round):
-        enemyData = getEnemyData()
+        enemyData = self.getEnemyData()
         if cordinate == "x":
             self.positionX = enemyData["Round"+str(round)]["x"]
         if cordinate == "y":
             self.positionY = enemyData["Round"+str(round)]["y"]
-        return enemyData["Round"+str(round)][coordinate]
+        return enemyData["Round"+str(round)][cordinate]
 
     def getAnim(self,anim):
-        enemyData = getEnemyData()
+        enemyData = self.getEnemyData()
         return enemyData[anim+"Anim"]
