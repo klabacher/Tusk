@@ -15,6 +15,7 @@ class GameEngine(object):
         self.map = randrange(1, 3)
         self.loadAllSpritesAndMap()
         self.spawnPenguins()
+        self.openUi()
         while not self.hasWonGame() and not self.hasLost():
             self.doNextRound()
         self.goToPayout()
@@ -101,6 +102,15 @@ class GameEngine(object):
         return False
 
     def goToPayout():
+        self.sclient('[UI_CLIENTEVENT]|101|receivedJson|{"action":"loadWindow","initializationPayload":{"coinsEarned":5,"xpStart":95,"xpEnd":300,"rank":2,"doubleCoins":false,"isBoss":false,"round":2,"damage":0,"showItems":false},"layerName":"topLayer","loadDescription":"","type":"playAction","windowUrl":"http://media.localhost/game/mpassets/minigames/cjsnow/en_US/deploy/swf/ui/windows/cardjitsu_snowpayout.swf","xPercent":0,"yPercent":0}')
+        self.fclient('[UI_CLIENTEVENT]|101|receivedJson|{"action":"loadWindow","initializationPayload":{"coinsEarned":5,"xpStart":95,"xpEnd":300,"rank":2,"doubleCoins":false,"isBoss":false,"round":2,"damage":0,"showItems":false},"layerName":"topLayer","loadDescription":"","type":"playAction","windowUrl":"http://media.localhost/game/mpassets/minigames/cjsnow/en_US/deploy/swf/ui/windows/cardjitsu_snowpayout.swf","xPercent":0,"yPercent":0}')
+        self.wclient('[UI_CLIENTEVENT]|101|receivedJson|{"action":"loadWindow","initializationPayload":{"coinsEarned":5,"xpStart":95,"xpEnd":300,"rank":2,"doubleCoins":false,"isBoss":false,"round":2,"damage":0,"showItems":false},"layerName":"topLayer","loadDescription":"","type":"playAction","windowUrl":"http://media.localhost/game/mpassets/minigames/cjsnow/en_US/deploy/swf/ui/windows/cardjitsu_snowpayout.swf","xPercent":0,"yPercent":0}')
+        return
+
+    def openUi():
+        self.sclient('[UI_CLIENTEVENT]|101|receivedJson|{"action":"loadWindow","initializationPayload":{ "cardsAssetPath":"http://media.localhost/game/mpassets/minigames/cjsnow/en_US/deploy/","element":"snow","isMember":true },"layerName":"topLayer","loadDescription":"","type":"playAction","windowUrl":"http://media.localhost/game/mpassets/minigames/cjsnow/en_US/deploy/swf/ui/windows/cardjitsu_snowui.swf","xPercent":0,"yPercent":0}')
+        self.fclient('[UI_CLIENTEVENT]|101|receivedJson|{"action":"loadWindow","initializationPayload":{ "cardsAssetPath":"http://media.localhost/game/mpassets/minigames/cjsnow/en_US/deploy/","element":"fire","isMember":true },"layerName":"topLayer","loadDescription":"","type":"playAction","windowUrl":"http://media.localhost/game/mpassets/minigames/cjsnow/en_US/deploy/swf/ui/windows/cardjitsu_snowui.swf","xPercent":0,"yPercent":0}')
+        self.wclient('[UI_CLIENTEVENT]|101|receivedJson|{"action":"loadWindow","initializationPayload":{ "cardsAssetPath":"http://media.localhost/game/mpassets/minigames/cjsnow/en_US/deploy/","element":"water","isMember":true },"layerName":"topLayer","loadDescription":"","type":"playAction","windowUrl":"http://media.localhost/game/mpassets/minigames/cjsnow/en_US/deploy/swf/ui/windows/cardjitsu_snowui.swf","xPercent":0,"yPercent":0}')
         return
 
     def playRoundTitle():
@@ -198,6 +208,45 @@ class GameEngine(object):
         return
 
     def moveAndAttack(client):
+        if client.element == "snow":
+            if client.nextPositionX is not client.positionX or client.nextPositionY is not client.positionY:
+                sendToAllPlayers("[O_ANIM]|67|0:100371|loop|800|1|0|12|1|0|0")
+                sendToAllPlayers("[O_SLIDE]|67|"+str(client.nextPositionX)+"|"+str(client.nextPositionY)+"|1000")
+                time.sleep(1)
+            if client.nextAttack is not -1:
+                if client.nextAttack == 1:
+                    sendToAllPlayers("[O_ANIM]|67|0:100362|play_once|800|1|0|12|1|0|0")
+                if client.nextAttack == 2:
+                    sendToAllPlayers("[O_ANIM]|67|0:100377|loop|800|1|0|12|1|0|0")
+                time.sleep(1)
+                client.nextAttack=-1
+            sendToAllPlayers("[O_ANIM]|67|0:100361|loop|800|1|0|12|1|0|0")
+        if client.element == "fire":
+            if client.nextPositionX is not client.positionX or client.nextPositionY is not client.positionY:
+                sendToAllPlayers("[O_ANIM]|67|0:100341|loop|800|1|0|12|1|0|0")
+                sendToAllPlayers("[O_SLIDE]|67|"+str(client.nextPositionX)+"|"+str(client.nextPositionY)+"|1000")
+                time.sleep(1)
+            if client.nextAttack is not -1:
+                if client.nextAttack == 1:
+                    sendToAllPlayers("[O_ANIM]|65|0:100343|play_once|800|1|0|12|1|0|0")
+                if client.nextAttack == 2:
+                    sendToAllPlayers("[O_ANIM]|65|0:100360|loop|800|1|0|12|1|0|0")
+                time.sleep(1)
+                client.nextAttack=-1
+            sendToAllPlayers("[O_ANIM]|65|0:100340|loop|800|1|0|12|1|0|0")
+        if client.element == "water":
+            if client.nextPositionX is not client.positionX or client.nextPositionY is not client.positionY:
+                sendToAllPlayers("[O_ANIM]|67|0:100323|loop|800|1|0|12|1|0|0")
+                sendToAllPlayers("[O_SLIDE]|67|"+str(client.nextPositionX)+"|"+str(client.nextPositionY)+"|1000")
+                time.sleep(1)
+            if client.nextAttack is not -1:
+                if client.nextAttack == 1:
+                    sendToAllPlayers("[O_ANIM]|69|0:100321|play_once|800|1|0|12|1|0|0")
+                if client.nextAttack == 2:
+                    sendToAllPlayers("[O_ANIM]|69|0:100333|play_once|800|1|0|12|1|0|0")
+                time.sleep(1)
+                client.nextAttack=-1
+            sendToAllPlayers("[O_ANIM]|69|0:100322|loop|800|1|0|12|1|0|0")
         return
 
     def numPowerCardsUsed():
@@ -228,19 +277,25 @@ class GameEngine(object):
         if client.element == "snow": #67 anim id 100371
             sendToAllPlayers("[O_ANIM]|67|0:100371|play_once|800|1|0|12|1|0|0")
             time.sleep(1)
-            sendToAllPlayers("[O_HERE]|80|0:1|4.5|2.5|0|1|0|0|0||0:1|0|1|0")
-            sendToAllPlayers("[O_ANIM]|80|0:100371|loop|800|1|0|12|1|0|0")
-            sendToAllPlayers("[O_HERE]|81|0:1|4.5|2.5|0|1|0|0|0||0:1|0|1|0")
-            sendToAllPlayers("[O_ANIM]|81|0:100371|loop|800|1|0|12|1|0|0")
+            sendToAllPlayers("[O_HERE]|80|0:1|"+str(client.positionX)+"|"+str(client.positionY)+"|0|1|0|0|0||0:1|0|1|0")
+            sendToAllPlayers("[O_ANIM]|80|0:100370|loop|800|1|0|12|1|0|0")
+            sendToAllPlayers("[O_HERE]|81|0:1|"+str(client.powerCardX)+"|"+str(client.powerCardY)+"|0|1|0|0|0||0:1|0|1|0")
+            sendToAllPlayers("[O_ANIM]|81|0:8740003|loop|800|1|0|12|1|0|0")
             time.sleep(1)
+            sendToAllPlayers("[O_HERE]|80|0:1|999|999|0|1|0|0|0||0:1|0|1|0")
+            sendToAllPlayers("[O_HERE]|81|0:1|999|999|0|1|0|0|0||0:1|0|1|0")
+            sendToAllPlayers("[O_ANIM]|67|0:100361|loop|700|1|0|13|2|0|0")
         if client.element == "fire": #65 anim id 100378
             sendToAllPlayers("[O_ANIM]|65|0:100378|play_once|800|1|0|12|1|0|0")
             time.sleep(1)
-            sendToAllPlayers("[O_HERE]|82|0:1|4.5|2.5|0|1|0|0|0||0:1|0|1|0")
-            sendToAllPlayers("[O_ANIM]|82|0:100371|loop|800|1|0|12|1|0|0")
-            sendToAllPlayers("[O_HERE]|83|0:1|4.5|2.5|0|1|0|0|0||0:1|0|1|0")
-            sendToAllPlayers("[O_ANIM]|83|0:100371|loop|800|1|0|12|1|0|0")
+            sendToAllPlayers("[O_HERE]|82|0:1|"+str(client.positionX)+"|"+str(client.positionY)+"|0|1|0|0|0||0:1|0|1|0")
+            sendToAllPlayers("[O_ANIM]|82|0:100345|loop|800|1|0|12|1|0|0")
+            sendToAllPlayers("[O_HERE]|83|0:1|"+str(client.powerCardX)+"|"+str(client.powerCardY)+"|0|1|0|0|0||0:1|0|1|0")
+            sendToAllPlayers("[O_ANIM]|83|0:100344|loop|800|1|0|12|1|0|0")
             time.sleep(1)
+            sendToAllPlayers("[O_HERE]|82|0:1|999|999|0|1|0|0|0||0:1|0|1|0")
+            sendToAllPlayers("[O_HERE]|83|0:1|999|999|0|1|0|0|0||0:1|0|1|0")
+            sendToAllPlayers("[O_ANIM]|65|0:100340|loop|700|1|0|13|2|0|0")
         if client.element == "water": #69 anim id 100329
             sendToAllPlayers("[O_ANIM]|69|0:100329|play_once|800|1|0|12|1|0|0")
             time.sleep(1)
@@ -249,6 +304,9 @@ class GameEngine(object):
             sendToAllPlayers("[O_HERE]|85|0:1|"+str(client.powerCardX)+"|"+str(client.powerCardY)+"|0|1|0|0|0||0:1|0|1|0")
             sendToAllPlayers("[O_ANIM]|85|0:100328|play_once|800|1|0|12|1|0|0")
             time.sleep(1)
+            sendToAllPlayers("[O_HERE]|84|0:1|999|999|0|1|0|0|0||0:1|0|1|0")
+            sendToAllPlayers("[O_HERE]|85|0:1|999|999|0|1|0|0|0||0:1|0|1|0")
+            sendToAllPlayers("[O_ANIM]|69|0:100322|loop|700|1|0|13|2|0|0")
         return
 
     def moveAndAttackEnemy(enemy):

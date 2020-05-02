@@ -11,8 +11,11 @@ class Penguin(Spheniscidae):
         self.session = session
         self.positionX = 0
         self.positionY = 0
-        self.nextPosition = None
-        self.nextAttack = None
+        self.nextPositionX = 0
+        self.nextPositionY = 0
+        self.nextAttack = -1 #-1 no attack 1 attack 2 heal
+        self.nextAttackX = 0
+        self.nextAttackY = 0
         self.hp = None
         self.range = None
         self.power = None
