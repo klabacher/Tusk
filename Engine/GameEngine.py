@@ -37,6 +37,7 @@ class GameEngine(object):
                 self.getMoves(self.sclient)
             self.startTimer()
             self.hideTimer()
+            self.hideMoves()
             self.hideGrid()
             if not self.fclient.hasDisconnected and not self.fclient.usedPowerCard and not self.fclient.hp<=0:
                 self.moveAndAttack(self.fclient)
@@ -112,7 +113,72 @@ class GameEngine(object):
         return
 
     def getMoves(self,client):
+        if self.isValidMove(pos1-2,pos2):
+            self.sendtag("[O_HERE]|400|0:100063|"+str(pos1-2)+"|"+str(pos2)+"|0|1|0|0|0||0:1|0|1|0")
+        if self.isValidMove(pos1-1,pos2):
+            self.sendtag("[O_HERE]|401|0:100063|"+str(pos1-1)+"|"+str(pos2)+"|0|1|0|0|0||0:1|0|1|0")
+        if self.isValidMove(pos1+2,pos2):
+            self.sendtag("[O_HERE]|402|0:100063|"+str(pos1+2)+"|"+str(pos2)+"|0|1|0|0|0||0:1|0|1|0")
+        if self.isValidMove(pos1+1,pos2):
+            self.sendtag("[O_HERE]|403|0:100063|"+str(pos1+1)+"|"+str(pos2)+"|0|1|0|0|0||0:1|0|1|0")
+        if self.isValidMove(pos1,pos2-2):
+            self.sendtag("[O_HERE]|404|0:100063|"+str(pos1)+"|"+str(pos2-2)+"|0|1|0|0|0||0:1|0|1|0")
+        if self.isValidMove(pos1,pos2-1):
+            self.sendtag("[O_HERE]|405|0:100063|"+str(pos1)+"|"+str(pos2-1)+"|0|1|0|0|0||0:1|0|1|0")
+        if self.isValidMove(pos1,pos2+2):
+            self.sendtag("[O_HERE]|406|0:100063|"+str(pos1)+"|"+str(pos2+2)+"|0|1|0|0|0||0:1|0|1|0")
+        if self.isValidMove(pos1,pos2+1):
+            self.sendtag("[O_HERE]|407|0:100063|"+str(pos1)+"|"+str(pos2+1)+"|0|1|0|0|0||0:1|0|1|0")
+        if self.isValidMove(pos1-1,pos2-1):
+            self.sendtag("[O_HERE]|408|0:100063|"+str(pos1-1)+"|"+str(pos2-1)+"|0|1|0|0|0||0:1|0|1|0")
+        if self.isValidMove(pos1-1,pos2+1):
+            self.sendtag("[O_HERE]|409|0:100063|"+str(pos1-1)+"|"+str(pos2+1)+"|0|1|0|0|0||0:1|0|1|0")
+        if self.isValidMove(pos1+1,pos2+1):
+            self.sendtag("[O_HERE]|410|0:100063|"+str(pos1+1)+"|"+str(pos2+1)+"|0|1|0|0|0||0:1|0|1|0")
+        if self.isValidMove(pos1+1,pos2-1):
+            self.sendtag("[O_HERE]|411|0:100063|"+str(pos1+1)+"|"+str(pos2-1)+"|0|1|0|0|0||0:1|0|1|0")
+        if self.isValidMove(pos1,pos2):
+            self.sendtag("[O_HERE]|412|0:100270|"+str(pos1)+"|"+str(pos2)+"|0|1|0|0|0||0:1|0|1|0")
+        if client.move==3:
+            if self.isValidMove(pos1,pos2-3):
+                self.sendtag("[O_HERE]|413|0:100063|"+str(pos1-2)+"|"+str(pos2)+"|0|1|0|0|0||0:1|0|1|0")
+            if self.isValidMove(pos1-1,pos2-2):
+                self.sendtag("[O_HERE]|414|0:100063|"+str(pos1-1)+"|"+str(pos2)+"|0|1|0|0|0||0:1|0|1|0")
+            if self.isValidMove(pos1-2,pos2-1):
+                self.sendtag("[O_HERE]|415|0:100063|"+str(pos1+2)+"|"+str(pos2)+"|0|1|0|0|0||0:1|0|1|0")
+            if self.isValidMove(pos1-3,pos2):
+                self.sendtag("[O_HERE]|416|0:100063|"+str(pos1+1)+"|"+str(pos2)+"|0|1|0|0|0||0:1|0|1|0")
+            if self.isValidMove(pos1-2,pos2+1):
+                self.sendtag("[O_HERE]|417|0:100063|"+str(pos1)+"|"+str(pos2-2)+"|0|1|0|0|0||0:1|0|1|0")
+            if self.isValidMove(pos1-1,pos2+2):
+                self.sendtag("[O_HERE]|418|0:100063|"+str(pos1)+"|"+str(pos2-1)+"|0|1|0|0|0||0:1|0|1|0")
+            if self.isValidMove(pos1,pos2+3):
+                self.sendtag("[O_HERE]|419|0:100063|"+str(pos1)+"|"+str(pos2+2)+"|0|1|0|0|0||0:1|0|1|0")
+            if self.isValidMove(pos1+1,pos2+2):
+                self.sendtag("[O_HERE]|420|0:100063|"+str(pos1)+"|"+str(pos2+1)+"|0|1|0|0|0||0:1|0|1|0")
+            if self.isValidMove(pos1+2,pos2+1):
+                self.sendtag("[O_HERE]|421|0:100063|"+str(pos1-1)+"|"+str(pos2-1)+"|0|1|0|0|0||0:1|0|1|0")
+            if self.isValidMove(pos1+3,pos2):
+                self.sendtag("[O_HERE]|422|0:100063|"+str(pos1-1)+"|"+str(pos2+1)+"|0|1|0|0|0||0:1|0|1|0")
+            if self.isValidMove(pos1+2,pos2+1):
+                self.sendtag("[O_HERE]|423|0:100063|"+str(pos1+1)+"|"+str(pos2+1)+"|0|1|0|0|0||0:1|0|1|0")
+            if self.isValidMove(pos1+1,pos2+2):
+                self.sendtag("[O_HERE]|424|0:100063|"+str(pos1+1)+"|"+str(pos2-1)+"|0|1|0|0|0||0:1|0|1|0")
         return
+
+    def hideMoves():
+        for x in range(24):
+            self.sendtag("[O_HERE]|"+str(400+x)+"|0:100063|9999|9999|0|1|0|0|0||0:1|0|1|0")
+        return
+
+    def isValidMove(self,pos1,pos2):
+        if pos1<=8.5 and pos2<=5 and pos1>=0.5 and pos2>=1:
+            if pos1==2.5 and pos2==1 or pos1==6.5 and pos2 ==1 or pos1==2.5 and pos2 ==5 or pos1==6.5 and pos2 ==5:
+                return False
+            else:
+                return True
+        else:
+            return False
 
     def startTimer():
         sendToAllPlayers('[UI_CLIENTEVENT]|101|receivedJson|{"action":"loadWindow","triggerName":"Timer_Start","initializationPayload":{ "element":"water","phase":1 },"layerName":"topLayer","loadDescription":"","type":"playAction","windowUrl":"http://media.localhost/game/mpassets/minigames/cjsnow/en_US/deploy/swf/ui/windows/cardjitsu_snowtimer.swf","xPercent":0,"yPercent":0}')
