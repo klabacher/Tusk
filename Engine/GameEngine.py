@@ -37,6 +37,7 @@ class GameEngine(object):
             if not self.sclient.hasDisconnected:
                 self.getMoves(self.sclient)
             self.startTimer()
+            time.sleep(10)
             self.hideTimer()
             self.hideMoves()
             self.hideGrid()
@@ -54,9 +55,8 @@ class GameEngine(object):
                 self.playPowerCard(wclient)
             if self.sclient.usedPowerCard:
                 self.playPowerCard(sclient)
-            for x in GD["Enemy"]:
-                if x["Round"+self.round][x] is not -1:
-                    #todo: check if hp <=0
+            for x in roundEnemys:
+                if x.hp<=0:
                     self.moveAndAttackEnemy(x)
         if self.hasWonRound():
             self.round+=1
