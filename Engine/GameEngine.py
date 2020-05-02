@@ -227,22 +227,28 @@ class GameEngine(object):
     def playPowerCard(self,client):
         if client.element == "snow": #67 anim id 100371
             sendToAllPlayers("[O_ANIM]|67|0:100371|play_once|800|1|0|12|1|0|0")
+            time.sleep(1)
             sendToAllPlayers("[O_HERE]|80|0:1|4.5|2.5|0|1|0|0|0||0:1|0|1|0")
             sendToAllPlayers("[O_ANIM]|80|0:100371|loop|800|1|0|12|1|0|0")
             sendToAllPlayers("[O_HERE]|81|0:1|4.5|2.5|0|1|0|0|0||0:1|0|1|0")
             sendToAllPlayers("[O_ANIM]|81|0:100371|loop|800|1|0|12|1|0|0")
+            time.sleep(1)
         if client.element == "fire": #65 anim id 100378
             sendToAllPlayers("[O_ANIM]|65|0:100378|play_once|800|1|0|12|1|0|0")
+            time.sleep(1)
             sendToAllPlayers("[O_HERE]|82|0:1|4.5|2.5|0|1|0|0|0||0:1|0|1|0")
             sendToAllPlayers("[O_ANIM]|82|0:100371|loop|800|1|0|12|1|0|0")
             sendToAllPlayers("[O_HERE]|83|0:1|4.5|2.5|0|1|0|0|0||0:1|0|1|0")
             sendToAllPlayers("[O_ANIM]|83|0:100371|loop|800|1|0|12|1|0|0")
+            time.sleep(1)
         if client.element == "water": #69 anim id 100329
             sendToAllPlayers("[O_ANIM]|69|0:100329|play_once|800|1|0|12|1|0|0")
-            sendToAllPlayers("[O_HERE]|84|0:1|4.5|2.5|0|1|0|0|0||0:1|0|1|0")
-            sendToAllPlayers("[O_ANIM]|84|0:100371|loop|800|1|0|12|1|0|0")
-            sendToAllPlayers("[O_HERE]|85|0:1|4.5|2.5|0|1|0|0|0||0:1|0|1|0")
-            sendToAllPlayers("[O_ANIM]|85|0:100371|loop|800|1|0|12|1|0|0")
+            time.sleep(1)
+            sendToAllPlayers("[O_HERE]|84|0:1|"+str(client.positionX)+"|"+str(client.positionY)+"|0|1|0|0|0||0:1|0|1|0")
+            sendToAllPlayers("[O_ANIM]|84|0:100330|loop|800|1|0|12|1|0|0")
+            sendToAllPlayers("[O_HERE]|85|0:1|"+str(client.powerCardX)+"|"+str(client.powerCardY)+"|0|1|0|0|0||0:1|0|1|0")
+            sendToAllPlayers("[O_ANIM]|85|0:100328|play_once|800|1|0|12|1|0|0")
+            time.sleep(1)
         return
 
     def moveAndAttackEnemy(enemy):

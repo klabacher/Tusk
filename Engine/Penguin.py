@@ -25,6 +25,8 @@ class Penguin(Spheniscidae):
         self.usedPowerCard = False
         self.powerCardX=0
         self.powerCardY=0
+        self.game = None
+        self.isHost = False
         self.logger.info("Penguin class instantiated")
 
     def connectionLost(self, reason):

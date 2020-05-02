@@ -81,6 +81,10 @@ def startGame(client):
     removeFromQueue(fireclient)
     logger.info("Game started with players Fire:{} Snow:{} Water:{}".format(fireId,snowId,waterId))
     game = GameEngine(fireclient, waterclient, snowclient)
+    client.isHost = True
+    snowclient.game = game
+    waterclient.game = game
+    fireclient.game = game
     return
 
 def getNameById(client, pid):
