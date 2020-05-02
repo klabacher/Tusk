@@ -9,7 +9,7 @@ from Engine.Engine import CJSnowFactory
 from twisted.internet import protocol, reactor, task
 from twisted.python import log
 
-
+loggingDEV = False
 
 log.startLogging(sys.stdout)
 def InitiateColorLogger(name='cjsnow'):
@@ -28,8 +28,10 @@ def InitiateColorLogger(name='cjsnow'):
         'TAG': 'white',
     }))
     cjsnow_logger.addHandler(cjsnow_stream)
-
-    cjsnow_logger.setLevel(logging.DEBUG)
+    if loggingDEV == False:
+        cjsnow_logger.setLevel(logging.WARNING)
+    else:
+        cjsnow_logger.setLevel(logging.DEBUG)
     return cjsnow_logger
 
 CjsnowLogger = InitiateColorLogger()
