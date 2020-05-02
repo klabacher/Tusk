@@ -27,7 +27,7 @@ class GameEngine(object):
         #wait for received animation done
         for x in GD["Enemies"]:
             if x["Round"+str(self.round)]["x"] != -1:
-                self.createAndSpawnEnemy(self,x)
+                self.createAndSpawnEnemy(x)
         while not self.hasWonRound() and not self.hasLost():
             self.showGrid()
             if not self.fclient.hasDisconnected:
