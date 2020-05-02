@@ -3,9 +3,9 @@ import time
 
 class GameEngine(object):
     def __init__(self, fireclient, waterclient, snowclient):
-        self.fclient = fireclient #object id
-        self.wclient = waterclient #object id
-        self.sclient = snowclient #object id
+        self.fclient = fireclient #object id 65 hp 66
+        self.wclient = waterclient #object id 67 hp 68
+        self.sclient = snowclient #object id 69 hp 70
         self.round = 1
         self.roundEnemys = []
         self.map = None
@@ -67,21 +67,26 @@ class GameEngine(object):
         return
 
     def spawnPenguins():
-        sendToAllPlayers("[O_HERE]|63|0:1|0.5|1.0004|0|1|0|0|0|Actor63|0:30040|0|1|0")
-        sendToAllPlayers("[O_SPRITE]|63|0:100395|1|")
-        sendToAllPlayers("[O_HERE]|64|0:1|0.5|3.0004|0|1|0|0|0|Actor64|0:30040|0|1|0")
-        sendToAllPlayers("[O_SPRITE]|64|0:100395|1|")
-        sendToAllPlayers("[O_HERE]|65|0:1|0.5|5.0004|0|1|0|0|0|Actor65|0:30040|0|1|0")
-        sendToAllPlayers("[O_SPRITE]|65|0:100395|1|")
-        sendToAllPlayers("[O_HERE]|12|0:1|4.5|2.5|0|1|0|0|0||0:1|0|1|0")
-        sendToAllPlayers("[O_MOVE]|12|0.5|1|128")
-        sendToAllPlayers("[O_ANIM]|12|0:100340|loop|800|1|0|12|1|0|0")
-        sendToAllPlayers("[O_HERE]|4|0:1|4.5|2.5|0|1|0|0|0||0:1|0|1|0")
-        sendToAllPlayers("[O_MOVE]|4|0.5|3|128")
-        sendToAllPlayers("[O_ANIM]|4|0:100361|loop|800|1|0|12|1|0|0")
-        sendToAllPlayers("[O_HERE]|13|0:1|4.5|2.5|0|1|0|0|0||0:1|0|1|0")
-        sendToAllPlayers("[O_MOVE]|13|0.5|5|128")
-        sendToAllPlayers("[O_ANIM]|13|0:100322|loop|700|1|0|13|2|0|0")
+        sendToAllPlayers("[O_HERE]|65|0:1|4.5|2.5|0|1|0|0|0||0:1|0|1|0")
+        sendToAllPlayers("[O_MOVE]|65|0.5|1|128")
+        sendToAllPlayers("[O_ANIM]|65|0:100340|loop|800|1|0|12|1|0|0")
+
+        sendToAllPlayers("[O_HERE]|66|0:1|0.5|1.0004|0|1|0|0|0|Actor63|0:30040|0|1|0")
+        sendToAllPlayers("[O_SPRITE]|66|0:100395|1|")
+
+        sendToAllPlayers("[O_HERE]|67|0:1|4.5|2.5|0|1|0|0|0||0:1|0|1|0")
+        sendToAllPlayers("[O_MOVE]|67|0.5|3|128")
+        sendToAllPlayers("[O_ANIM]|67|0:100361|loop|800|1|0|12|1|0|0")
+
+        sendToAllPlayers("[O_HERE]|68|0:1|0.5|3.0004|0|1|0|0|0|Actor64|0:30040|0|1|0")
+        sendToAllPlayers("[O_SPRITE]|68|0:100395|1|")
+
+        sendToAllPlayers("[O_HERE]|69|0:1|4.5|2.5|0|1|0|0|0||0:1|0|1|0")
+        sendToAllPlayers("[O_MOVE]|69|0.5|5|128")
+        sendToAllPlayers("[O_ANIM]|69|0:100322|loop|700|1|0|13|2|0|0")
+
+        sendToAllPlayers("[O_HERE]|70|0:1|0.5|5.0004|0|1|0|0|0|Actor65|0:30040|0|1|0")
+        sendToAllPlayers("[O_SPRITE]|70|0:100395|1|")
         return
 
     def hasWonGame():
@@ -114,61 +119,61 @@ class GameEngine(object):
 
     def getMoves(self,client):
         if self.isValidMove(pos1-2,pos2):
-            self.sendtag("[O_HERE]|400|0:100063|"+str(pos1-2)+"|"+str(pos2)+"|0|1|0|0|0||0:1|0|1|0")
+            client.sendLine("[O_HERE]|400|0:100063|"+str(pos1-2)+"|"+str(pos2)+"|0|1|0|0|0||0:1|0|1|0")
         if self.isValidMove(pos1-1,pos2):
-            self.sendtag("[O_HERE]|401|0:100063|"+str(pos1-1)+"|"+str(pos2)+"|0|1|0|0|0||0:1|0|1|0")
+            client.sendLine("[O_HERE]|401|0:100063|"+str(pos1-1)+"|"+str(pos2)+"|0|1|0|0|0||0:1|0|1|0")
         if self.isValidMove(pos1+2,pos2):
-            self.sendtag("[O_HERE]|402|0:100063|"+str(pos1+2)+"|"+str(pos2)+"|0|1|0|0|0||0:1|0|1|0")
+            client.sendLine("[O_HERE]|402|0:100063|"+str(pos1+2)+"|"+str(pos2)+"|0|1|0|0|0||0:1|0|1|0")
         if self.isValidMove(pos1+1,pos2):
-            self.sendtag("[O_HERE]|403|0:100063|"+str(pos1+1)+"|"+str(pos2)+"|0|1|0|0|0||0:1|0|1|0")
+            client.sendLine("[O_HERE]|403|0:100063|"+str(pos1+1)+"|"+str(pos2)+"|0|1|0|0|0||0:1|0|1|0")
         if self.isValidMove(pos1,pos2-2):
-            self.sendtag("[O_HERE]|404|0:100063|"+str(pos1)+"|"+str(pos2-2)+"|0|1|0|0|0||0:1|0|1|0")
+            client.sendLine("[O_HERE]|404|0:100063|"+str(pos1)+"|"+str(pos2-2)+"|0|1|0|0|0||0:1|0|1|0")
         if self.isValidMove(pos1,pos2-1):
-            self.sendtag("[O_HERE]|405|0:100063|"+str(pos1)+"|"+str(pos2-1)+"|0|1|0|0|0||0:1|0|1|0")
+            client.sendLine("[O_HERE]|405|0:100063|"+str(pos1)+"|"+str(pos2-1)+"|0|1|0|0|0||0:1|0|1|0")
         if self.isValidMove(pos1,pos2+2):
-            self.sendtag("[O_HERE]|406|0:100063|"+str(pos1)+"|"+str(pos2+2)+"|0|1|0|0|0||0:1|0|1|0")
+            client.sendLine("[O_HERE]|406|0:100063|"+str(pos1)+"|"+str(pos2+2)+"|0|1|0|0|0||0:1|0|1|0")
         if self.isValidMove(pos1,pos2+1):
-            self.sendtag("[O_HERE]|407|0:100063|"+str(pos1)+"|"+str(pos2+1)+"|0|1|0|0|0||0:1|0|1|0")
+            client.sendLine("[O_HERE]|407|0:100063|"+str(pos1)+"|"+str(pos2+1)+"|0|1|0|0|0||0:1|0|1|0")
         if self.isValidMove(pos1-1,pos2-1):
-            self.sendtag("[O_HERE]|408|0:100063|"+str(pos1-1)+"|"+str(pos2-1)+"|0|1|0|0|0||0:1|0|1|0")
+            client.sendLine("[O_HERE]|408|0:100063|"+str(pos1-1)+"|"+str(pos2-1)+"|0|1|0|0|0||0:1|0|1|0")
         if self.isValidMove(pos1-1,pos2+1):
-            self.sendtag("[O_HERE]|409|0:100063|"+str(pos1-1)+"|"+str(pos2+1)+"|0|1|0|0|0||0:1|0|1|0")
+            client.sendLine("[O_HERE]|409|0:100063|"+str(pos1-1)+"|"+str(pos2+1)+"|0|1|0|0|0||0:1|0|1|0")
         if self.isValidMove(pos1+1,pos2+1):
-            self.sendtag("[O_HERE]|410|0:100063|"+str(pos1+1)+"|"+str(pos2+1)+"|0|1|0|0|0||0:1|0|1|0")
+            client.sendLine("[O_HERE]|410|0:100063|"+str(pos1+1)+"|"+str(pos2+1)+"|0|1|0|0|0||0:1|0|1|0")
         if self.isValidMove(pos1+1,pos2-1):
-            self.sendtag("[O_HERE]|411|0:100063|"+str(pos1+1)+"|"+str(pos2-1)+"|0|1|0|0|0||0:1|0|1|0")
+            client.sendLine("[O_HERE]|411|0:100063|"+str(pos1+1)+"|"+str(pos2-1)+"|0|1|0|0|0||0:1|0|1|0")
         if self.isValidMove(pos1,pos2):
-            self.sendtag("[O_HERE]|412|0:100270|"+str(pos1)+"|"+str(pos2)+"|0|1|0|0|0||0:1|0|1|0")
+            client.sendLine("[O_HERE]|412|0:100270|"+str(pos1)+"|"+str(pos2)+"|0|1|0|0|0||0:1|0|1|0")
         if client.move==3:
             if self.isValidMove(pos1,pos2-3):
-                self.sendtag("[O_HERE]|413|0:100063|"+str(pos1-2)+"|"+str(pos2)+"|0|1|0|0|0||0:1|0|1|0")
+                client.sendLine("[O_HERE]|413|0:100063|"+str(pos1-2)+"|"+str(pos2)+"|0|1|0|0|0||0:1|0|1|0")
             if self.isValidMove(pos1-1,pos2-2):
-                self.sendtag("[O_HERE]|414|0:100063|"+str(pos1-1)+"|"+str(pos2)+"|0|1|0|0|0||0:1|0|1|0")
+                client.sendLine("[O_HERE]|414|0:100063|"+str(pos1-1)+"|"+str(pos2)+"|0|1|0|0|0||0:1|0|1|0")
             if self.isValidMove(pos1-2,pos2-1):
-                self.sendtag("[O_HERE]|415|0:100063|"+str(pos1+2)+"|"+str(pos2)+"|0|1|0|0|0||0:1|0|1|0")
+                client.sendLine("[O_HERE]|415|0:100063|"+str(pos1+2)+"|"+str(pos2)+"|0|1|0|0|0||0:1|0|1|0")
             if self.isValidMove(pos1-3,pos2):
-                self.sendtag("[O_HERE]|416|0:100063|"+str(pos1+1)+"|"+str(pos2)+"|0|1|0|0|0||0:1|0|1|0")
+                client.sendLine("[O_HERE]|416|0:100063|"+str(pos1+1)+"|"+str(pos2)+"|0|1|0|0|0||0:1|0|1|0")
             if self.isValidMove(pos1-2,pos2+1):
-                self.sendtag("[O_HERE]|417|0:100063|"+str(pos1)+"|"+str(pos2-2)+"|0|1|0|0|0||0:1|0|1|0")
+                client.sendLine("[O_HERE]|417|0:100063|"+str(pos1)+"|"+str(pos2-2)+"|0|1|0|0|0||0:1|0|1|0")
             if self.isValidMove(pos1-1,pos2+2):
-                self.sendtag("[O_HERE]|418|0:100063|"+str(pos1)+"|"+str(pos2-1)+"|0|1|0|0|0||0:1|0|1|0")
+                client.sendLine("[O_HERE]|418|0:100063|"+str(pos1)+"|"+str(pos2-1)+"|0|1|0|0|0||0:1|0|1|0")
             if self.isValidMove(pos1,pos2+3):
-                self.sendtag("[O_HERE]|419|0:100063|"+str(pos1)+"|"+str(pos2+2)+"|0|1|0|0|0||0:1|0|1|0")
+                client.sendLine("[O_HERE]|419|0:100063|"+str(pos1)+"|"+str(pos2+2)+"|0|1|0|0|0||0:1|0|1|0")
             if self.isValidMove(pos1+1,pos2+2):
-                self.sendtag("[O_HERE]|420|0:100063|"+str(pos1)+"|"+str(pos2+1)+"|0|1|0|0|0||0:1|0|1|0")
+                client.sendLine("[O_HERE]|420|0:100063|"+str(pos1)+"|"+str(pos2+1)+"|0|1|0|0|0||0:1|0|1|0")
             if self.isValidMove(pos1+2,pos2+1):
-                self.sendtag("[O_HERE]|421|0:100063|"+str(pos1-1)+"|"+str(pos2-1)+"|0|1|0|0|0||0:1|0|1|0")
+                client.sendLine("[O_HERE]|421|0:100063|"+str(pos1-1)+"|"+str(pos2-1)+"|0|1|0|0|0||0:1|0|1|0")
             if self.isValidMove(pos1+3,pos2):
-                self.sendtag("[O_HERE]|422|0:100063|"+str(pos1-1)+"|"+str(pos2+1)+"|0|1|0|0|0||0:1|0|1|0")
+                client.sendLine("[O_HERE]|422|0:100063|"+str(pos1-1)+"|"+str(pos2+1)+"|0|1|0|0|0||0:1|0|1|0")
             if self.isValidMove(pos1+2,pos2+1):
-                self.sendtag("[O_HERE]|423|0:100063|"+str(pos1+1)+"|"+str(pos2+1)+"|0|1|0|0|0||0:1|0|1|0")
+                client.sendLine("[O_HERE]|423|0:100063|"+str(pos1+1)+"|"+str(pos2+1)+"|0|1|0|0|0||0:1|0|1|0")
             if self.isValidMove(pos1+1,pos2+2):
-                self.sendtag("[O_HERE]|424|0:100063|"+str(pos1+1)+"|"+str(pos2-1)+"|0|1|0|0|0||0:1|0|1|0")
+                client.sendLine("[O_HERE]|424|0:100063|"+str(pos1+1)+"|"+str(pos2-1)+"|0|1|0|0|0||0:1|0|1|0")
         return
 
     def hideMoves():
         for x in range(24):
-            self.sendtag("[O_HERE]|"+str(400+x)+"|0:100063|9999|9999|0|1|0|0|0||0:1|0|1|0")
+            sendToAllPlayers("[O_HERE]|"+str(400+x)+"|0:100063|9999|9999|0|1|0|0|0||0:1|0|1|0")
         return
 
     def isValidMove(self,pos1,pos2):
@@ -219,7 +224,25 @@ class GameEngine(object):
             sendToAllPlayers('[UI_CLIENTEVENT]|101|receivedJson|{"action":"loadWindow","initializationPayload":{ "data":["snow","fire","water"],"snow":true,"fire":false,"sensei":false,"numSlices":3 },"water":"true","numSlices":2,"snow":true,"fire":false,"sensei":false ,"layerName":"topLayer","loadDescription":"","type":"playAction","windowUrl":"http://media.localhost/game/mpassets/minigames/cjsnow/en_US/deploy/swf/ui/windows/cardjitsu_snowcombos.swf","xPercent":0,"yPercent":0}')
         return
 
-    def playPowerCard(client):
+    def playPowerCard(self,client):
+        if client.element == "snow": #67 anim id 100371
+            sendToAllPlayers("[O_ANIM]|67|0:100371|play_once|800|1|0|12|1|0|0")
+            sendToAllPlayers("[O_HERE]|80|0:1|4.5|2.5|0|1|0|0|0||0:1|0|1|0")
+            sendToAllPlayers("[O_ANIM]|80|0:100371|loop|800|1|0|12|1|0|0")
+            sendToAllPlayers("[O_HERE]|81|0:1|4.5|2.5|0|1|0|0|0||0:1|0|1|0")
+            sendToAllPlayers("[O_ANIM]|81|0:100371|loop|800|1|0|12|1|0|0")
+        if client.element == "fire": #65 anim id 100378
+            sendToAllPlayers("[O_ANIM]|65|0:100378|play_once|800|1|0|12|1|0|0")
+            sendToAllPlayers("[O_HERE]|82|0:1|4.5|2.5|0|1|0|0|0||0:1|0|1|0")
+            sendToAllPlayers("[O_ANIM]|82|0:100371|loop|800|1|0|12|1|0|0")
+            sendToAllPlayers("[O_HERE]|83|0:1|4.5|2.5|0|1|0|0|0||0:1|0|1|0")
+            sendToAllPlayers("[O_ANIM]|83|0:100371|loop|800|1|0|12|1|0|0")
+        if client.element == "water": #69 anim id 100329
+            sendToAllPlayers("[O_ANIM]|69|0:100329|play_once|800|1|0|12|1|0|0")
+            sendToAllPlayers("[O_HERE]|84|0:1|4.5|2.5|0|1|0|0|0||0:1|0|1|0")
+            sendToAllPlayers("[O_ANIM]|84|0:100371|loop|800|1|0|12|1|0|0")
+            sendToAllPlayers("[O_HERE]|85|0:1|4.5|2.5|0|1|0|0|0||0:1|0|1|0")
+            sendToAllPlayers("[O_ANIM]|85|0:100371|loop|800|1|0|12|1|0|0")
         return
 
     def moveAndAttackEnemy(enemy):
