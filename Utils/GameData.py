@@ -73,7 +73,7 @@ GameData= {
 			"Range": 1,
 			"Attack": 10,
 			"Move": 1,
-            "idleAnim": 100305,
+            "idleAnim": 100297,
 			"Round1": {
 				"x": 8.5,
 				"y": 4
