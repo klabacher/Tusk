@@ -4,6 +4,7 @@ from Engine.Matchmaking import addToQueue,getNameById,removeFromQueue
 import json, logging
 import time
 from Utils.GameData import GameData as GD
+import threading
 
 
 logger = logging.getLogger("cjsnow")
@@ -218,5 +219,4 @@ def readyhandler(client, arg):
         client.sendLine('[UI_CLIENTEVENT]|101|receivedJson|{"action":"closeCjsnowRoomToRoom","moveToPlayerSelect":false}')
 
         if client.isHost:
-            client.game.loadGame()
-        time.sleep(10)
+            threading.Timer(2, client.game.loadGame())
