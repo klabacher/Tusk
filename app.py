@@ -9,7 +9,7 @@ from Engine.Engine import CJSnowFactory
 from twisted.internet import protocol, reactor, task
 from twisted.python import log
 
-loggingDEV = False
+loggingDEV = True
 
 log.startLogging(sys.stdout)
 def InitiateColorLogger(name='cjsnow'):
