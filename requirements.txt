@@ -1,0 +1,4 @@
+colorlog
+SQLAlchemy
+Twisted
+psycopg2
