@@ -1,4 +1,4 @@
 colorlog
 SQLAlchemy
 Twisted
-psycopg2
+psycopg2-binary
