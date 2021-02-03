@@ -1,3 +1,6 @@
+NOT WORKING
+
+
 # Tusk - Cardjitsu Snow Server Emulator
 
 <a href="http://fvcproductions.com"><img src="https://i.imgur.com/k9hkD8V.png" style="border-radius:20px;" title="CJSBanner" alt="CJSBanner"></a>
